@@ -1,0 +1,31 @@
+LabratorySetup - Documentation
+author: 3slange
+date: 20/09/2017
+
+### Project description ###
+
+This Unity project is developed for my HCI Bachelor thesis. It contains a virtual Labratory environment with an interactive robotic arm.
+Three courses with increased complexity are setup up for time and path tracking with multiple test subjects. The gathered data is
+analyzed and tested against the hypothesis that a user relies more on virtual fixtures given a rise in complexity through the test situation.
+
+### Key Scripts and Objects ###
+
+* UR5-Target: This GameObject is the interaction interface to move the robotic arm using the Vive Controller. 
+The GripButton is used to bind the robotic arm to the Vive Controller. Using the Trigger Button, the _targetObject is set as child of the UR5-Target.
+As long as the Trigger Button is pressed, movement of the the _targetObject is possible.
+
+* _targetObject: In the test scenario, it has to be moved to the _targetArea following a predefined path. Data collection starts at pickup and stops
+when the _targetObject is released withoin the _targetArea
+
+* [CameraRig]/Controller/Grip Point: Part of the ViveGrip Asset. Enables Interaction with the GameObjects using different scripts.
+Grab input and Interaction input can be mapped to different buttons on the Controller through public variables in the editor.
+
+* Vive Grip_Grabbable [req: RigidBody]: Makes GameObjects movable/grabbable with the Vive Controller
+* Vive Grip_Interactable: Enables actions triggered by the Interaction input specified in the Grip Point editor.
+* Vive Grip_EventBridge: Easy event triggering on predefined Vive Grip Events. Used to atach/detach children to enable movement.
+
+* VF_Force: Deals with the haptic and visual feedback based on surface to surface distance from targetobject to virtual fixture. Uses Lerp to change values dynamically.
+
+### Todo ####
+
+* Virtual Fixtures: Dummy Virtual Fixtures have to be setup with repelling force functions in one direction. EDIT VF_Force.cs Script
