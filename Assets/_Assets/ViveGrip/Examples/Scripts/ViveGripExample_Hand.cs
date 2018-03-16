@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.VR;
+using UnityEngine.XR;
 
 public class ViveGripExample_Hand : MonoBehaviour {
   public Mesh rest;
@@ -9,7 +9,7 @@ public class ViveGripExample_Hand : MonoBehaviour {
 
   void Start () {
     bool shadow = transform.childCount == 0;
-    if (VRDevice.model.Contains("Rift") && !shadow) {
+    if (XRDevice.model.Contains("Rift") && !shadow) {
       // Oculus Touch feels more natural with a tilt
       transform.Rotate(40f, 0, 0);
       transform.Translate(0f, -0.05f, -0.03f, Space.World);
