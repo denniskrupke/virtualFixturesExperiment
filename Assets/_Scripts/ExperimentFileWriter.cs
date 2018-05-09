@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 public class ExperimentFileWriter : MonoBehaviour
@@ -40,6 +41,44 @@ public class ExperimentFileWriter : MonoBehaviour
         }
     }
 
+	// TODO add timestamps
+	public void WriteTargetTrajectory(List<StampedPose> poses, int participant, int method, int course, int trial){
+		string path = Path.Combine(Application.persistentDataPath, "targetObject_" + participant + "_" + method + "_" + course + "_" + trial);
+		using (StreamWriter writer = File.CreateText(path))
+		{
+			foreach (StampedPose pose in poses) {
+				string line = "";
+				line += pose.timeInMillis;
+				line += ",";
+				line += pose.position.x;
+				line += ",";
+				line += pose.position.y;
+				line += ",";
+				line += pose.position.z;
+				writer.WriteLine (line);
+			}
+			writer.Flush();
+			writer.Dispose();
+		}
+	}
+
+	// TODO probably adding a timestamp
+	public void WritePrecisionList(List<KeyValuePair<float,bool> > precisionList, int participant, int method, int course, int trial){
+		string path = Path.Combine(Application.persistentDataPath, "precision_" + participant + "_" + method + "_" + course + "_" + trial);
+		using (StreamWriter writer = File.CreateText(path))
+		{
+			foreach (KeyValuePair<float,bool> el in precisionList) {
+				string line = "";
+				line += el.Key;
+				line += ",";
+				line += el.Value;
+				writer.WriteLine (line);
+			}
+			writer.Flush();
+			writer.Dispose();
+		}
+	}
+
 
     public void AppendLineToFile(string line)
     {
@@ -70,56 +109,56 @@ public class ExperimentFileWriter : MonoBehaviour
         data += ",";
         data += frame.timeStamp_stop;
         data += ",";
-        data += "[";
-        data += frame.position_targetObject.x;
-        data += ",";
-        data += frame.position_targetObject.y;
-        data += ",";
-        data += frame.position_targetObject.z;
-        data += "]";
-        data += ",";
-        data += "[";
-        data += frame.position_targetArea.x;
-        data += ",";
-        data += frame.position_targetArea.y;
-        data += ",";
-        data += frame.position_targetArea.z;
-        data += "]";
-        data += ",";
-        data += "[";
-        data += frame.position_user_eye.x;
-        data += ",";
-        data += frame.position_user_eye.y;
-        data += ",";
-        data += frame.position_user_eye.z;
-        data += "]";
-        data += ",";
-        data += "[";
-        data += frame.position_user_controller.x;
-        data += ",";
-        data += frame.position_user_controller.y;
-        data += ",";
-        data += frame.position_user_controller.z;
-        data += "]";
-        data += ",";
-        data += frame.ur5_shoulder_pan_joint;
-        data += ",";
-        data += frame.ur5_shoulder_lift_joint;
-        data += ",";
-        data += frame.ur5_elbow_joint;
-        data += ",";
-        data += frame.ur5_wrist_1_joint;
-        data += ",";
-		data += frame.ur5_wrist_2_joint;
-        data += ",";
-        data += frame.ur5_wrist_3_joint;
-        data += ",";
-        data += frame.minimum_distance_euklid_targetObject2obstacle;
-        data += ",";
-        data += frame.minimum_distance_euklid_targetObject2targetArea;
-        data += ",";
-        data += frame.error;
-        data += ",";
+//        data += "[";
+//        data += frame.position_targetObject.x;
+//        data += ",";
+//        data += frame.position_targetObject.y;
+//        data += ",";
+//        data += frame.position_targetObject.z;
+//        data += "]";
+//        data += ",";
+//        data += "[";
+//        data += frame.position_targetArea.x;
+//        data += ",";
+//        data += frame.position_targetArea.y;
+//        data += ",";
+//        data += frame.position_targetArea.z;
+//        data += "]";
+//        data += ",";
+//        data += "[";
+//        data += frame.position_user_eye.x;
+//        data += ",";
+//        data += frame.position_user_eye.y;
+//        data += ",";
+//        data += frame.position_user_eye.z;
+//        data += "]";
+//        data += ",";
+//        data += "[";
+//        data += frame.position_user_controller.x;
+//        data += ",";
+//        data += frame.position_user_controller.y;
+//        data += ",";
+//        data += frame.position_user_controller.z;
+//        data += "]";
+//        data += ",";
+//        data += frame.ur5_shoulder_pan_joint;
+//        data += ",";
+//        data += frame.ur5_shoulder_lift_joint;
+//        data += ",";
+//        data += frame.ur5_elbow_joint;
+//        data += ",";
+//        data += frame.ur5_wrist_1_joint;
+//        data += ",";
+//		data += frame.ur5_wrist_2_joint;
+//        data += ",";
+//        data += frame.ur5_wrist_3_joint;
+//        data += ",";
+//        data += frame.minimum_distance_euklid_targetObject2obstacle;
+//        data += ",";
+//        data += frame.minimum_distance_euklid_targetObject2targetArea;
+//        data += ",";
+//        data += frame.error;
+//        data += ",";
         data += frame.errorCount;
         data += ",";
         data += frame.time;

@@ -24,7 +24,6 @@ public class trialHandler_targetArea : MonoBehaviour {
     // main function for updating trialcount and resetting positions
 	void OnTriggerEnter(Collider other)
     {
-  
         if (other.gameObject.CompareTag("targetObject"))
         {
         	if(isColliding) return;
@@ -36,7 +35,9 @@ public class trialHandler_targetArea : MonoBehaviour {
             UR5_Target.transform.DetachChildren();
             // update trial count on drop to change scene after trial 3 (0,1,2)
             GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>().StopTrial();
-            GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>().UpdateDataFrame();
+            GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>().UpdateDataFrame(); //dumps data to files
+		
+
             // reset stopTimer to enable easier calculating numbers (trial times arer all positiv)s
             GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>().experimentData.timeStamp_stop = 0;
             GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>().trial++;

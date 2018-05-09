@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class ExperimentSceneManager : MonoBehaviour {
 
     [Header("Course Rotation Settings")]
-    public bool VF_first_rotation = false;
+    public bool VF_first = false;
     public string currentScene;
 
     private string[] sceneNames;
@@ -21,16 +21,17 @@ public class ExperimentSceneManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        if (VF_first_rotation)
+        if (VF_first)
         {
             // VF first
-            sceneNames = new string[] { "Pause", "Course1_VF", "Course2_VF", "Course3_VF", "Pause", "Course1", "Course2", "Course3"};
+            sceneNames = new string[] { "PauseVF", "Course1_VF", "Course2_VF", "Course3_VF", "Pause", "Course1", "Course2", "Course3"};
         } else
         {   // VF second
-            sceneNames = new string[] {"Pause", "Course1","Course2", "Course3","Pause", "Course1_VF", "Course2_VF", "Course3_VF"};
+            sceneNames = new string[] {"Pause", "Course1","Course2", "Course3","PauseVF", "Course1_VF", "Course2_VF", "Course3_VF"};
         }
-
+			
 		SceneManager.LoadScene (sceneNames[sceneIndex], LoadSceneMode.Additive);
+
         // provide inital sceneName for ExperimentData in DataLogger
         currentScene = sceneNames[sceneIndex];
         modulator = sceneNames.Length;

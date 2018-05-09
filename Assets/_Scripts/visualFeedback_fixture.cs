@@ -28,18 +28,19 @@ public class visualFeedback_fixture : MonoBehaviour {
 		
 	void Update()
 	{
-		// get targetObjectCenter position
-		targetObjectCenter = targetObject.GetComponent<Collider>().transform.position;
+		surfaceDistance = GetComponentInParent<CheckDistance> ().GetDistanceApproximatedBetweenSurfaces ();
+//		// get targetObjectCenter position
+//		targetObjectCenter = targetObject.GetComponent<Collider>().transform.position;
+//
+//		// get closest virtualFixtureSurfacePoint to targetObjectCenter position
+//		virtualFixtureSurfacePoint = GetComponent<Collider>().ClosestPointOnBounds(targetObjectCenter);
+//
+//		// get surfaceDistance from virtualFixtureSurfacePoint to targetObjectCenter
+//		surfaceDistance = Vector3.Distance(virtualFixtureSurfacePoint, targetObjectCenter); 
 
-		// get closest virtualFixtureSurfacePoint to targetObjectCenter position
-		virtualFixtureSurfacePoint = GetComponent<Collider>().ClosestPointOnBounds(targetObjectCenter);
-
-		// get surfaceDistance from virtualFixtureSurfacePoint to targetObjectCenter
-		surfaceDistance = Vector3.Distance(virtualFixtureSurfacePoint, targetObjectCenter); 
-
-		// visualize the different distances (debug)
-		Debug.DrawLine(transform.position, targetObjectCenter, Color.yellow); //yellow center to center
-		Debug.DrawLine(virtualFixtureSurfacePoint, targetObjectCenter, Color.magenta); // magenta surface to surface
+//		// visualize the different distances (debug)
+//		Debug.DrawLine(transform.position, targetObjectCenter, Color.yellow); //yellow center to center
+//		Debug.DrawLine(virtualFixtureSurfacePoint, targetObjectCenter, Color.magenta); // magenta surface to surface
 
 		// change _environmentVirtualFixture Color depending on the (scaled) distance between virtualFixtureSurfacePoint and targetObjectCenter
 		rend.material.color = Color.LerpUnclamped (redColor, greenColor, capDistance(surfaceDistance * 6));
