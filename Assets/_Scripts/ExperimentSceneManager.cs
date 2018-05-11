@@ -9,6 +9,7 @@ public class ExperimentSceneManager : MonoBehaviour {
     [Header("Course Rotation Settings")]
     public bool VF_first = false;
     public string currentScene;
+	public short repetitions = 5;
 
     private string[] sceneNames;
     private int modulator;
@@ -41,16 +42,18 @@ public class ExperimentSceneManager : MonoBehaviour {
 	void Update () {
 
         // if trial 0,1,2 are completed, load next scene in rotation (or manual scene change with spacebar)
-        if (GetComponent<ExperimentDataLogger>().trial > 2 || Input.GetKeyDown(KeyCode.Space)) {
-
+		if (GetComponent<ExperimentDataLogger>().trial > repetitions-1 || Input.GetKeyDown(KeyCode.Space)) {
             SceneManager.UnloadSceneAsync (sceneNames [(int)nfmod(sceneIndex, modulator)]);
-            sceneIndex++;
-            SceneManager.LoadSceneAsync (sceneNames [(int)nfmod(sceneIndex, modulator)], LoadSceneMode.Additive);
-            
-            // reset course specific variables (new course name, trial and errorCount reset
-            currentScene = sceneNames[(int)nfmod(sceneIndex, modulator)];
-            GetComponent<ExperimentDataLogger>().trial = 0;
-            GetComponent<ExperimentDataLogger>().errorCount = 0;
+
+			if (++sceneIndex >= sceneNames.Length)
+				UnityEditor.EditorApplication.isPlaying = false;
+			else {
+				SceneManager.LoadSceneAsync (sceneNames [(int)nfmod (sceneIndex, modulator)], LoadSceneMode.Additive);       
+				// reset course specific variables (new course name, trial and errorCount reset
+				currentScene = sceneNames [(int)nfmod (sceneIndex, modulator)];
+				GetComponent<ExperimentDataLogger> ().trial = 0;
+				GetComponent<ExperimentDataLogger> ().errorCount = 0;
+			}
         }
 	}
 
