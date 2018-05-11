@@ -8,6 +8,7 @@ public class gripController : MonoBehaviour {
     public GameObject _UR5_target;
 	public GameObject _targetObject;
     public GameObject _finger1, _finger2, _finger3;
+    public float minGrabbingDistance = .07f;
 
     private Vector3 targetObjectCenter;
     private Vector3 UR5_targetCenter;
@@ -21,6 +22,9 @@ public class gripController : MonoBehaviour {
         _finger1 = GameObject.Find("s_model_finger_1_joint_1");
         _finger2 = GameObject.Find("s_model_finger_2_joint_1");
         _finger3 = GameObject.Find("s_model_finger_middle_joint_1");
+
+        _controller.TriggerClicked += HandleTriggerClicked;
+        _controller.TriggerUnclicked += HandleTriggerUnclicked;        
     }
 	
 	// Update is called once per frame
@@ -32,24 +36,18 @@ public class gripController : MonoBehaviour {
 
         //print(distance);
 
-        // targetOject can only be grabbed on close distance
-        if (distance < 0.07f)
-        {
-            _controller.TriggerClicked += HandleTriggerClicked;
-            _controller.TriggerUnclicked += HandleTriggerUnclicked;
-        }
-        else
-        {
-            _controller.TriggerClicked += HandleTriggerUnclicked;
-            _controller.TriggerUnclicked += HandleTriggerUnclicked;
-        }
+        // targetOject can only be grabbed on close distance        
 	}
 
     // attach targetObject for movement
     private void HandleTriggerClicked(object sender, ClickedEventArgs e)
     {
-        _targetObject.transform.SetParent(parent: _UR5_target.transform);
+        if (distance < 0.07f)
+        {
+            _targetObject.transform.SetParent(parent: _UR5_target.transform);
+        }
         CloseGrippers();
+
     }
 
     // detach targetObject
@@ -63,9 +61,9 @@ public class gripController : MonoBehaviour {
     // visual effect gripper closing
     private void CloseGrippers()
     {
-        _finger1.GetComponent<BioIK.KinematicJoint>().SetTargetValues(1, 0, 0);
-        _finger2.GetComponent<BioIK.KinematicJoint>().SetTargetValues(1, 0, 0);
-        _finger3.GetComponent<BioIK.KinematicJoint>().SetTargetValues(1, 0, 0);
+        _finger1.GetComponent<BioIK.KinematicJoint>().SetTargetValues(1.2f, 0, 0);
+        _finger2.GetComponent<BioIK.KinematicJoint>().SetTargetValues(1.2f, 0, 0);
+        _finger3.GetComponent<BioIK.KinematicJoint>().SetTargetValues(1.2f, 0, 0);
     }
 
     // visual effect gripper opening
