@@ -5,7 +5,7 @@ using System.Linq;
 
 public class ExperimentDataFrame{
 	public int id_participant;
-	public bool method; // true = VF in first trial, false = VF in second trial
+	public int method; // true = VF in first trial, false = VF in second trial
 	public string course; // 1 = Course1, 2 = Course2, 3 = Course3
 	public int trial; // [0...3]
 	public int handedness; // 0 = left handedness, 1 = right handedness
@@ -72,10 +72,10 @@ public class ExperimentDataLogger : MonoBehaviour {
 	private RecordPose targetPoseRecorder;
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		experimentData = new ExperimentDataFrame();
-		targetPoseRecorder = GameObject.FindGameObjectWithTag ("targetObject").GetComponent<RecordPose> ();
+		targetPoseRecorder = GameObject.FindGameObjectWithTag ("targetObject").GetComponent<RecordPose> ();        
     }
     
 //	// Update is called once per frame
@@ -106,7 +106,7 @@ public class ExperimentDataLogger : MonoBehaviour {
     // while the trial is running, update the dataframe with current values und append to file
     public void UpdateDataFrame() {
         experimentData.id_participant = id_participant;
-        experimentData.method = GetComponent<ExperimentSceneManager>().VF_first;
+        experimentData.method = GetComponent<ExperimentSceneManager>().VF_first == true ? 1 : 0;
         experimentData.course = experimentSceneManager.currentScene;
         experimentData.trial = trial;
         experimentData.handedness = handedness;
@@ -129,7 +129,7 @@ public class ExperimentDataLogger : MonoBehaviour {
         experimentData.time = experimentData.timeStamp_stop - experimentData.timeStamp_start;
 
         // set individual file name for every participant and course
-        experimentFileWriter.filename = "id_" + id_participant + "_" + experimentData.course + "_method_" + experimentData.method + ".csv";
+        //experimentFileWriter.filename = "id_" + id_participant + "_" + experimentData.course + "_method_" + experimentData.method + ".csv";
         experimentFileWriter.AppendLineToFile(experimentFileWriter.ExperimentDataFrame2String(experimentData));
 
 		// write trajectories
@@ -151,12 +151,14 @@ public class ExperimentDataLogger : MonoBehaviour {
         print("StartTrial called");
         experimentData.UpdateStartTime();
 		targetPoseRecorder.StartRecording ();
+        GameObject.FindGameObjectWithTag("course").GetComponent<FindClosestObstacle>().StartRecording();
     }
 
 	public void StopTrial(){
         print("StopTrial called");
         experimentData.UpdateStopTime();    
 		targetPoseRecorder.StopRecording ();
+        GameObject.FindGameObjectWithTag("course").GetComponent<FindClosestObstacle>().StopRecording();
     }
 
 //    private float RadianToDegree(float radian) {

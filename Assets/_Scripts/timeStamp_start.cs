@@ -14,7 +14,7 @@ public class timeStamp_start : MonoBehaviour {
 
     void OnTriggerExit(Collider other) {
         if (other.gameObject.CompareTag("targetObject")) {
-            //GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>().StartTrial();
+            GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>().StartTrial();
         }        
     }
 }

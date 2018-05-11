@@ -23,13 +23,18 @@ public class hapticFeedback_targetObject : MonoBehaviour {
 	void Update () {
 		float minimalDistance = GameObject.FindGameObjectWithTag ("course").GetComponent<FindClosestObstacle> ().GetClosestDistance ();
 
-		// change controller vibration strength depending on the (scaled) minimal surfaceDistance to any _environmentVirtualFixture
-		// the higher the scaling factor the closer you have to be to the fixtures for a vibration effect
-		ushort vibrationLerp = (ushort)Mathf.LerpUnclamped (maxVibration, minVibration, minimalDistance * 17);
-		SteamVR_Controller.Input (1).TriggerHapticPulse (vibrationLerp); //LeftController index: 1
-		SteamVR_Controller.Input (2).TriggerHapticPulse (vibrationLerp); //RightController index: 2
-		SteamVR_Controller.Input (3).TriggerHapticPulse (vibrationLerp); //LeftController index: 3
-		SteamVR_Controller.Input (4).TriggerHapticPulse (vibrationLerp); //RightController index: 4
+        // change controller vibration strength depending on the (scaled) minimal surfaceDistance to any _environmentVirtualFixture
+        // the higher the scaling factor the closer you have to be to the fixtures for a vibration effect
+        
+        ushort vibrationLerp = (ushort)Mathf.LerpUnclamped (maxVibration, minVibration, minimalDistance);
+        Debug.Log(vibrationLerp);
+        if (minimalDistance < 0.01f)
+        {
+            SteamVR_Controller.Input(1).TriggerHapticPulse(vibrationLerp); //LeftController index: 1
+            SteamVR_Controller.Input(2).TriggerHapticPulse(vibrationLerp); //RightController index: 2
+            SteamVR_Controller.Input(3).TriggerHapticPulse(vibrationLerp); //LeftController index: 3
+            SteamVR_Controller.Input(4).TriggerHapticPulse(vibrationLerp); //RightController index: 4
+        }
 
 
 //		// due to loading and unloading scenes, fixtures need to found every frame

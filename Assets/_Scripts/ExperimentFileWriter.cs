@@ -42,10 +42,11 @@ public class ExperimentFileWriter : MonoBehaviour
     }
 
 	// TODO add timestamps
-	public void WriteTargetTrajectory(List<StampedPose> poses, int participant, int method, int course, int trial){
-		string path = Path.Combine(Application.persistentDataPath, "targetObject_" + participant + "_" + method + "_" + course + "_" + trial);
+	public void WriteTargetTrajectory(List<StampedPose> poses, int participant, int method, string course, int trial){
+		string path = Path.Combine(Application.persistentDataPath, "targetObject_" + participant + "_" + method + "_" + course + "_" + trial + ".csv");
 		using (StreamWriter writer = File.CreateText(path))
 		{
+            if (poses.Count == 0) Debug.Log("no poses in the list");
 			foreach (StampedPose pose in poses) {
 				string line = "";
 				line += pose.timeInMillis;
@@ -63,11 +64,12 @@ public class ExperimentFileWriter : MonoBehaviour
 	}
 
 	// TODO probably adding a timestamp
-	public void WritePrecisionList(List<KeyValuePair<float,bool> > precisionList, int participant, int method, int course, int trial){
-		string path = Path.Combine(Application.persistentDataPath, "precision_" + participant + "_" + method + "_" + course + "_" + trial);
+	public void WritePrecisionList(List<KeyValuePair<float,bool> > precisionList, int participant, int method, string course, int trial){
+		string path = Path.Combine(Application.persistentDataPath, "precision_" + participant + "_" + method + "_" + course + "_" + trial + ".csv");
 		using (StreamWriter writer = File.CreateText(path))
 		{
-			foreach (KeyValuePair<float,bool> el in precisionList) {
+            if (precisionList.Count == 0) Debug.Log("no precision recordings in the list");
+            foreach (KeyValuePair<float,bool> el in precisionList) {
 				string line = "";
 				line += el.Key;
 				line += ",";

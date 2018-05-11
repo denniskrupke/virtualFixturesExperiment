@@ -29,7 +29,7 @@ public class FindClosestObstacle : MonoBehaviour {
 				if (dist.transform.gameObject != closestObject) {
 					if (closestObject.GetComponent<HighlightObject> () != null)	closestObject.GetComponent<HighlightObject> ().SetHighlighted (false);												
 					closestObject = dist.transform.gameObject;
-					closestObject.GetComponent<HighlightObject> ().SetHighlighted (true);
+					//closestObject.GetComponent<HighlightObject> ().SetHighlighted (true);
 					//Debug.Log ("found closer object: "+closestObject.name);
 				}
 				closestDistance = dist.GetDistanceApproximatedBetweenSurfaces();
