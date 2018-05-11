@@ -13,12 +13,14 @@ public class ExperimentFileWriter : MonoBehaviour
     void Start()
     {
         string path = Path.Combine(Application.persistentDataPath, filename);
+        /*
         using (StreamWriter writer = File.CreateText(path))
         {
             writer.WriteLine("100");
             writer.Flush();
             writer.Dispose();
         }
+        */
 
         print(Application.persistentDataPath);
     }
@@ -29,7 +31,7 @@ public class ExperimentFileWriter : MonoBehaviour
 
     }
 
-
+    /*
     public void WriteTestFile()
     {
         string path = Path.Combine(Application.persistentDataPath, "TestFileMoop.txt");
@@ -40,8 +42,8 @@ public class ExperimentFileWriter : MonoBehaviour
             writer.Dispose();
         }
     }
-
-	// TODO add timestamps
+    */
+	
 	public void WriteTargetTrajectory(List<StampedPose> poses, int participant, int method, string course, int trial){
 		string path = Path.Combine(Application.persistentDataPath, "targetObject_" + participant + "_" + method + "_" + course + "_" + trial + ".csv");
 		using (StreamWriter writer = File.CreateText(path))

@@ -7,6 +7,8 @@ public class hapticFeedback_targetObject : MonoBehaviour {
 
     public Vector3 startingPosition = new Vector3();
 
+    Vector3 startingPositionIKtarget;
+
     // array for all active _environmentVirtualFixture
     private GameObject[] virtualFixtureList;
     // array for all active _environmentObstacles
@@ -17,7 +19,8 @@ public class hapticFeedback_targetObject : MonoBehaviour {
 
 	void Start () {
         this.transform.position = startingPosition;
-	}
+        //startingPositionIKtarget = GameObject.FindGameObjectWithTag("UR5-Target").transform.position;
+    }
 
 
 	void Update () {
@@ -27,7 +30,7 @@ public class hapticFeedback_targetObject : MonoBehaviour {
         // the higher the scaling factor the closer you have to be to the fixtures for a vibration effect
         
         ushort vibrationLerp = (ushort)Mathf.LerpUnclamped (maxVibration, minVibration, minimalDistance);
-        Debug.Log(vibrationLerp);
+        //Debug.Log(vibrationLerp);
         if (minimalDistance < 0.01f)
         {
             SteamVR_Controller.Input(1).TriggerHapticPulse(vibrationLerp); //LeftController index: 1
@@ -77,5 +80,6 @@ public class hapticFeedback_targetObject : MonoBehaviour {
 
     public void resetPosition(){
         this.transform.position = startingPosition;
+        //GameObject.FindGameObjectWithTag("UR5-Target").transform.position = startingPositionIKtarget;
     }
 }
