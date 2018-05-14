@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using BioIK;
 
 public class gripController : MonoBehaviour {
 
@@ -61,17 +62,17 @@ public class gripController : MonoBehaviour {
     // visual effect gripper closing
     private void CloseGrippers()
     {
-        // _finger1.GetComponent<BioIK.KinematicJoint>().SetTargetValues(1.2f, 0, 0);
-        // _finger2.GetComponent<BioIK.KinematicJoint>().SetTargetValues(1.2f, 0, 0);
-        // _finger3.GetComponent<BioIK.KinematicJoint>().SetTargetValues(1.2f, 0, 0);
+		_finger1.GetComponent<BioJoint>().X.SetTargetValue(1.2f);
+		_finger2.GetComponent<BioJoint>().X.SetTargetValue(1.2f);
+		_finger3.GetComponent<BioJoint>().X.SetTargetValue(1.2f);
     }
 
     // visual effect gripper opening
     private void OpenGrippers()
     {
-        // _finger1.GetComponent<BioIK.KinematicJoint>().SetTargetValues(0, 0, 0);
-        // _finger2.GetComponent<BioIK.KinematicJoint>().SetTargetValues(0, 0, 0);
-        // _finger3.GetComponent<BioIK.KinematicJoint>().SetTargetValues(0, 0, 0);
+		_finger1.GetComponent<BioJoint>().X.SetTargetValue(0);
+		_finger2.GetComponent<BioJoint>().X.SetTargetValue(0);
+		_finger3.GetComponent<BioJoint>().X.SetTargetValue(0);
     }
 }
 
