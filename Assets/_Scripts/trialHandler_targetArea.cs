@@ -7,6 +7,8 @@ public class trialHandler_targetArea : MonoBehaviour {
     private GameObject targetObject;
     private GameObject UR5_Target;
     private bool isColliding;
+    
+
 
 	// Use this for initialization
 	void Start () {
@@ -17,17 +19,26 @@ public class trialHandler_targetArea : MonoBehaviour {
 	void Update () {
 		isColliding = false;
         targetObject = GameObject.FindGameObjectWithTag("targetObject");
-        UR5_Target = GameObject.Find("UR5-Target");
+        UR5_Target = GameObject.Find("UR5-Target");       
+    }
+
+   private void FadeBack()
+    {
+        SteamVR_Fade.Start(Color.clear, 1);
     }
 
 
     // main function for updating trialcount and resetting positions
-	void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("targetObject"))
         {
         	if(isColliding) return;
      		isColliding = true;
+
+            //Fading and back
+            SteamVR_Fade.Start(Color.gray, 1);
+            this.Invoke("FadeBack", 1);
 
             // reset targetObject to startingPosition
             targetObject.GetComponent<hapticFeedback_targetObject>().resetPosition();

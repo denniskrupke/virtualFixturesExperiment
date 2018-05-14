@@ -34,8 +34,9 @@ public class SteamVR_Fade : MonoBehaviour
 	{
 		SteamVR_Events.Fade.Send(newColor, duration, fadeOverlay);
 	}
+        
 
-	static public void View(Color newColor, float duration)
+    static public void View(Color newColor, float duration)
 	{
 		var compositor = OpenVR.Compositor;
 		if (compositor != null)
