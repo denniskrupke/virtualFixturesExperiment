@@ -24,7 +24,9 @@ public class hapticFeedback_targetObject : MonoBehaviour {
 
 
 	void Update () {
-		float minimalDistance = GameObject.FindGameObjectWithTag ("course").GetComponent<FindClosestObstacle> ().GetClosestDistance ();
+        if (GameObject.FindGameObjectWithTag("course") == null) return;
+        if (GameObject.FindGameObjectWithTag("course").GetComponent<FindClosestObstacle>() == null) return;
+        float minimalDistance = GameObject.FindGameObjectWithTag ("course").GetComponent<FindClosestObstacle> ().GetClosestDistance ();
 
         // change controller vibration strength depending on the (scaled) minimal surfaceDistance to any _environmentVirtualFixture
         // the higher the scaling factor the closer you have to be to the fixtures for a vibration effect

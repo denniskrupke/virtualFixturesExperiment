@@ -62,17 +62,24 @@ public class gripController : MonoBehaviour {
     // visual effect gripper closing
     private void CloseGrippers()
     {
-		_finger1.GetComponent<BioJoint>().X.SetTargetValue(1.2f);
-		_finger2.GetComponent<BioJoint>().X.SetTargetValue(1.2f);
-		_finger3.GetComponent<BioJoint>().X.SetTargetValue(1.2f);
+        //Debug.Log("begin close");
+        if (_finger1 == null) Debug.Log("no finger1");		
+        if (_finger1.GetComponent<BioJoint>() == null) Debug.Log("no joint");
+        if (_finger1.GetComponent<BioJoint>().X == null) Debug.Log("no motion");
+        _finger1.GetComponent<BioJoint>().X.SetTargetValue(-41.2f);
+        _finger2.GetComponent<BioJoint>().X.SetTargetValue(-41.2f);
+		_finger3.GetComponent<BioJoint>().X.SetTargetValue(-41.2f);
+        //Debug.Log("end close");
     }
 
     // visual effect gripper opening
     private void OpenGrippers()
     {
+        
 		_finger1.GetComponent<BioJoint>().X.SetTargetValue(0);
 		_finger2.GetComponent<BioJoint>().X.SetTargetValue(0);
 		_finger3.GetComponent<BioJoint>().X.SetTargetValue(0);
+        
     }
 }
 

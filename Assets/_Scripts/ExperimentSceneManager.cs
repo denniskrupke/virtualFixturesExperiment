@@ -47,13 +47,15 @@ public class ExperimentSceneManager : MonoBehaviour {
 
 			if (++sceneIndex >= sceneNames.Length)
 				UnityEditor.EditorApplication.isPlaying = false;
-			else {
-				SceneManager.LoadSceneAsync (sceneNames [(int)nfmod (sceneIndex, modulator)], LoadSceneMode.Additive);       
-				// reset course specific variables (new course name, trial and errorCount reset
-				currentScene = sceneNames [(int)nfmod (sceneIndex, modulator)];
+			else {                
+				SceneManager.LoadSceneAsync (sceneNames [(int)nfmod (sceneIndex, modulator)], LoadSceneMode.Additive);
+                Debug.Log("fading after new scene");
+                GameObject.Find("ExperimentController").GetComponent<Fader>().FadeInstantBack();
+                // reset course specific variables (new course name, trial and errorCount reset
+                currentScene = sceneNames [(int)nfmod (sceneIndex, modulator)];
 				GetComponent<ExperimentDataLogger> ().trial = 0;
-				GetComponent<ExperimentDataLogger> ().errorCount = 0;
-			}
+				GetComponent<ExperimentDataLogger> ().errorCount = 0;                
+            }
         }
 	}
 
@@ -62,4 +64,5 @@ public class ExperimentSceneManager : MonoBehaviour {
 	{
 		return a - b * (float)Math.Floor(a / b);
 	}
+  
 }
