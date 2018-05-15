@@ -28,16 +28,12 @@ public class visualFeedback_obstacle : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("targetObject"))
         {
-//            UpdateGlobalErrorState(true);            
+            //            UpdateGlobalErrorState(true);            
+            UpdateGlobalErrorCount();
             rend.material.color = Color.black;
         }
     }
-
-    private void OnTriggerStay(Collider other)
-    {
-        UpdateGlobalErrorCount();
-    }
-
+    
     private void OnTriggerExit(Collider other)
     {
 //        UpdateGlobalErrorState(false);
@@ -46,6 +42,7 @@ public class visualFeedback_obstacle : MonoBehaviour {
 
     private void UpdateGlobalErrorCount() {
         GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>().errorCount++;
+        Debug.Log(GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>().errorCount);
     }
 
 //    private void UpdateGlobalErrorState(bool boolean) {
