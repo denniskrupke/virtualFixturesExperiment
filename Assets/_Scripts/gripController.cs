@@ -14,6 +14,7 @@ public class gripController : MonoBehaviour {
     private Vector3 targetObjectCenter;
     private Vector3 UR5_targetCenter;
     private float distance;
+    private bool grabbed;
 
     // Use this for initialization
     void Start () {
@@ -25,7 +26,9 @@ public class gripController : MonoBehaviour {
         _finger3 = GameObject.Find("s_model_finger_middle_joint_1");
 
         _controller.TriggerClicked += HandleTriggerClicked;
-        _controller.TriggerUnclicked += HandleTriggerUnclicked;        
+        _controller.TriggerUnclicked += HandleTriggerUnclicked;
+
+        grabbed = false;
     }
 	
 	// Update is called once per frame
@@ -35,17 +38,19 @@ public class gripController : MonoBehaviour {
         UR5_targetCenter = _UR5_target.GetComponent<Collider>().transform.position;
         distance = Vector3.Distance(targetObjectCenter, UR5_targetCenter);
 
+        if (_controller.gripped) _UR5_target.transform.rotation = Quaternion.Euler(_UR5_target.transform.rotation.eulerAngles.x, _controller.transform.rotation.eulerAngles.y, _UR5_target.transform.rotation.eulerAngles.z);//_UR5_target.transform.RotateAround(_UR5_target.transform.position, new Vector3(0, 1, 0), _controller.transform.rotation.eulerAngles.y);
         //print(distance);
 
-        // targetOject can only be grabbed on close distance        
-	}
+            // targetOject can only be grabbed on close distance        
+    }
 
     // attach targetObject for movement
     private void HandleTriggerClicked(object sender, ClickedEventArgs e)
     {
         if (distance < 0.07f)
         {
-            _targetObject.transform.SetParent(parent: _UR5_target.transform);
+            _targetObject.transform.SetParent(parent: _UR5_target.transform);            
+            grabbed = true;
         }
         CloseGrippers();
 
@@ -70,16 +75,16 @@ public class gripController : MonoBehaviour {
         _finger2.GetComponent<BioJoint>().X.SetTargetValue(-41.2f);
 		_finger3.GetComponent<BioJoint>().X.SetTargetValue(-41.2f);
         //Debug.Log("end close");
+
     }
 
     // visual effect gripper opening
     private void OpenGrippers()
-    {
-        
+    {        
 		_finger1.GetComponent<BioJoint>().X.SetTargetValue(0);
 		_finger2.GetComponent<BioJoint>().X.SetTargetValue(0);
 		_finger3.GetComponent<BioJoint>().X.SetTargetValue(0);
-        
+        grabbed = false;
     }
 }
 
