@@ -51,6 +51,7 @@ public class gripController : MonoBehaviour {
         {
             _targetObject.transform.SetParent(parent: _UR5_target.transform);            
             grabbed = true;
+            GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>().SetGrabbed(grabbed);
         }
         CloseGrippers();
 
@@ -66,16 +67,10 @@ public class gripController : MonoBehaviour {
 
     // visual effect gripper closing
     private void CloseGrippers()
-    {
-        //Debug.Log("begin close");
-        if (_finger1 == null) Debug.Log("no finger1");		
-        if (_finger1.GetComponent<BioJoint>() == null) Debug.Log("no joint");
-        if (_finger1.GetComponent<BioJoint>().X == null) Debug.Log("no motion");
+    {        
         _finger1.GetComponent<BioJoint>().X.SetTargetValue(-41.2f);
         _finger2.GetComponent<BioJoint>().X.SetTargetValue(-41.2f);
-		_finger3.GetComponent<BioJoint>().X.SetTargetValue(-41.2f);
-        //Debug.Log("end close");
-
+		_finger3.GetComponent<BioJoint>().X.SetTargetValue(-41.2f);       
     }
 
     // visual effect gripper opening
@@ -83,8 +78,9 @@ public class gripController : MonoBehaviour {
     {        
 		_finger1.GetComponent<BioJoint>().X.SetTargetValue(0);
 		_finger2.GetComponent<BioJoint>().X.SetTargetValue(0);
-		_finger3.GetComponent<BioJoint>().X.SetTargetValue(0);
+		_finger3.GetComponent<BioJoint>().X.SetTargetValue(0);        
         grabbed = false;
+        GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>().SetGrabbed(grabbed);
     }
 }
 

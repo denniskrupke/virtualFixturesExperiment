@@ -61,12 +61,13 @@ public class ExperimentDataLogger : MonoBehaviour {
     [Header("Trial specific variables")]
     public int id_participant; // insterted manually
     public int trial = 0; // number of trial executed (1,2,3)
-    public int handedness; // 0 = left handedness, 1 = right handedness - inserted manually
-    public bool error; // public variable gets updated from visualFeedback_obstacle
+    public int handedness; // 0 = left handedness, 1 = right handedness - inserted manually    
     public int errorCount; // public variable gets updated from visualFeedback_obstacle
     public int gripperCollisionCount;
-    public List<float> minimum_distance_euklid_targetObject2obstacle_list; // public variable gets updated from visualFeedback_obstacle
+    public List<float> minimum_distance_euklid_targetObject2obstacle_list; // public variable gets updated from visualFeedback_obstacle    
 
+    bool isColliding; // public variable gets updated from visualFeedback_obstacle
+    bool isGrabbed; // if the gripper grasped an object
 
     public ExperimentDataFrame experimentData;
     private bool startArgument = false;
@@ -77,7 +78,9 @@ public class ExperimentDataLogger : MonoBehaviour {
     // Use this for initialization
     void Start () {
 		experimentData = new ExperimentDataFrame();
-		targetPoseRecorder = GameObject.FindGameObjectWithTag ("targetObject").GetComponent<RecordPose> ();        
+		targetPoseRecorder = GameObject.FindGameObjectWithTag ("targetObject").GetComponent<RecordPose> ();
+        isColliding = false;
+        isGrabbed = false;
     }
     
 //	// Update is called once per frame
@@ -162,6 +165,26 @@ public class ExperimentDataLogger : MonoBehaviour {
         experimentData.UpdateStopTime();    
 		targetPoseRecorder.StopRecording ();
         GameObject.FindGameObjectWithTag("course").GetComponent<FindClosestObstacle>().StopRecording();
+    }
+
+    public void SetColliding(bool colliding)
+    {
+        isColliding = colliding;
+    }
+
+    public bool IsColliding()
+    {
+        return isColliding;
+    }
+
+    public void SetGrabbed(bool grabbed)
+    {
+        isGrabbed = grabbed;
+    }
+
+    public bool IsGrabbed()
+    {
+        return isGrabbed;
     }
 
 //    private float RadianToDegree(float radian) {

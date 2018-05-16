@@ -12,6 +12,7 @@ public class CheckDistance : MonoBehaviour {
 
 	//float distanceFromCenter = 100.0f;
 	Transform movingObject; // the tracked/moving object for measuring the distance between the surfaces
+
 	float distanceApproximatedBetweenSurfaces = 100.0f;
 	Vector3 closestPoint;
 	Vector3 closestPoint2;
@@ -27,13 +28,11 @@ public class CheckDistance : MonoBehaviour {
 		var collider = GetComponent<Collider>();
 		if (!collider)
 			return; // nothing to do without a collider
-
 		closestPoint = collider.ClosestPoint(movingObject.position);
 
 		var collider2 = movingObject.GetComponent<Collider> ();
 		if (!collider2)
 			return; // nothing to do without a collider
-
 		closestPoint2 = collider2.ClosestPoint(closestPoint);
 
 		//distanceFromCenter = Vector3.Distance (closestPoint, movingObject.position);//- 0.0568f;
