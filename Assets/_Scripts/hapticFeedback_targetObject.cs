@@ -33,6 +33,7 @@ public class hapticFeedback_targetObject : MonoBehaviour {
         
         ushort vibrationLerp = (ushort)Mathf.LerpUnclamped (maxVibration, minVibration, minimalDistance);
         //Debug.Log(vibrationLerp);
+        /*
         if (minimalDistance < 0.01f)
         {
             SteamVR_Controller.Input(1).TriggerHapticPulse(500); //LeftController index: 1
@@ -40,6 +41,7 @@ public class hapticFeedback_targetObject : MonoBehaviour {
             SteamVR_Controller.Input(3).TriggerHapticPulse(500); //LeftController index: 3
             SteamVR_Controller.Input(4).TriggerHapticPulse(500); //RightController index: 4
         }
+        */
 
         if(GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>().IsColliding())
         {

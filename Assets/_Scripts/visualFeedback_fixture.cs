@@ -43,7 +43,7 @@ public class visualFeedback_fixture : MonoBehaviour {
 //		Debug.DrawLine(virtualFixtureSurfacePoint, targetObjectCenter, Color.magenta); // magenta surface to surface
 
 		// change _environmentVirtualFixture Color depending on the (scaled) distance between virtualFixtureSurfacePoint and targetObjectCenter
-		rend.material.color = Color.LerpUnclamped (redColor, greenColor, capDistance(surfaceDistance * 6));
+		rend.material.color = Color.LerpUnclamped (redColor, greenColor, capDistance(surfaceDistance*10));
 	}
 
     private float capDistance(float x) {

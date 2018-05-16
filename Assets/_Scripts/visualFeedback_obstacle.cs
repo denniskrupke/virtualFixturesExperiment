@@ -14,15 +14,15 @@ public class visualFeedback_obstacle : MonoBehaviour {
     CollisionOnCompoundObstacle compoundObstacleHandler;
     ExperimentDataLogger experimentLogger;
 
+    public bool visualizeCollisions = false;
+
     // Use this for initialization
     void Start () {
         rend = GetComponent<Renderer>();
         originalColor = rend.material.color;
         gripperCollisionCount = 0;
         graspedObjectIsCollidingWithObstacle = false;
-        compoundObstacleHandler = null;
-
-        experimentLogger = GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>();
+        compoundObstacleHandler = null;        
     }
 	
 	// Update is called once per frame
@@ -35,23 +35,24 @@ public class visualFeedback_obstacle : MonoBehaviour {
 
     void OnTriggerEnter(Collider other) {
         compoundObstacleHandler = gameObject.GetComponentInParent<CollisionOnCompoundObstacle>();
+        experimentLogger = GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>();
 
         if (other.gameObject.CompareTag("targetObject")) //Collision with grasped object
         {
             if(compoundObstacleHandler != null) //compound obstacle
             {
-                if(!compoundObstacleHandler.GetCollisionsWithGraspedObject() == 0) {                    
+                if(compoundObstacleHandler.GetCollisionsWithGraspedObject() == 0) {                    
                     UpdateGlobalErrorCount();                        
                     experimentLogger.SetColliding(true);        
                 }
                 compoundObstacleHandler.IncreaseCollisionsWithGraspedObject();                
             }
-            else  {
+            else  {// simple obstacle
                 graspedObjectIsCollidingWithObstacle = true;
                 UpdateGlobalErrorCount();                
                 experimentLogger.SetColliding(true);        
             }
-            rend.material.color = Color.red;
+            if(visualizeCollisions) rend.material.color = Color.red;
         }
         else if (other.gameObject.CompareTag("gripper")) { //Collision with robot           
                 if(compoundObstacleHandler != null) //compound obstacle
@@ -63,11 +64,11 @@ public class visualFeedback_obstacle : MonoBehaviour {
                     }
                     compoundObstacleHandler.IncreaseCollisionsWithGripper();
                 }
-                else if(gripperCollisionCount == 0){//simple obstacle
+                else {//simple obstacle
                 {
+                    if (gripperCollisionCount == 0 && experimentLogger.IsGrabbed()) UpdateGripperCollisionCount();    //causes counting collision
                     gripperCollisionCount++;
                     experimentLogger.SetColliding(true);    //causes haptic feedback
-                    if (experimentLogger.IsGrabbed()) UpdateGripperCollisionCount();    //causes counting collision
                 }
             }                
         }        
@@ -75,7 +76,7 @@ public class visualFeedback_obstacle : MonoBehaviour {
     
     private void OnTriggerExit(Collider other) {
         compoundObstacleHandler = gameObject.GetComponentInParent<CollisionOnCompoundObstacle>();
-        rend.material.color = originalColor;
+        if (visualizeCollisions) rend.material.color = originalColor;
 
         if (other.gameObject.CompareTag("targetObject"))
         {
@@ -84,23 +85,20 @@ public class visualFeedback_obstacle : MonoBehaviour {
                 compoundObstacleHandler.DecreaseCollisionsWithGraspedObject();
                 if(compoundObstacleHandler.GetCollisionsWithGripper() == 0 
                     && compoundObstacleHandler.GetCollisionsWithGraspedObject() == 0
-                    && gripperCollisionCount == 0
-                    && !graspedObjectIsCollidingWithObstacle) experimentLogger.SetColliding(false);        
+                    && gripperCollisionCount == 0) experimentLogger.SetColliding(false);        
             }
-            else {
+            else {// simple obstacle
                 graspedObjectIsCollidingWithObstacle = false;
-                if(gripperCollisionCount == 0 
-                    && !graspedObjectIsCollidingWithObstacle) experimentLogger.SetColliding(false);
+                if(gripperCollisionCount == 0) experimentLogger.SetColliding(false);
             }            
         }
         else if (other.gameObject.CompareTag("gripper")) {
             if(compoundObstacleHandler != null) //compound obstacle
             {
                 compoundObstacleHandler.DecreaseCollisionsWithGripper();
-                if(ompoundObstacleHandler.GetCollisionsWithGripper() == 0 
+                if(compoundObstacleHandler.GetCollisionsWithGripper() == 0 
                     && compoundObstacleHandler.GetCollisionsWithGraspedObject() == 0
-                    && gripperCollisionCount == 0
-                    && !graspedObjectIsCollidingWithObstacle) experimentLogger.SetColliding(false);                
+                    && gripperCollisionCount == 0) experimentLogger.SetColliding(false);                
             }
             else {
                 gripperCollisionCount--;
