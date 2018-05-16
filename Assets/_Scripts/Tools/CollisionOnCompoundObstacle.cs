@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class CollisionOnCompoundObstacle : MonoBehaviour {
 
-    bool isCollidingWithGraspedObject;
+    int collisionsWithGraspedObject;
     int collisionsWithGripper;
 
 	// Use this for initialization
 	void Start () {
-        isCollidingWithGraspedObject = false;
+        collisionsWithGraspedObject = 0;
         collisionsWithGripper = 0;
     }
 	
@@ -18,14 +18,19 @@ public class CollisionOnCompoundObstacle : MonoBehaviour {
 		
 	}
 
-    public void SetCollidingWithGraspedObject(bool colliding)
+    public void IncreaseCollisionsWithGraspedObject()
     {
-        isCollidingWithGraspedObject = colliding;
+        collisionsWithGraspedObject++;
     }
 
-    public bool IsCollidingWithGraspedObject()
+    public void DecreaseCollisionsWithGraspedObject()
     {
-        return isCollidingWithGraspedObject;
+        collisionsWithGraspedObject--;
+    }
+
+    public int GetCollisionsWithGraspedObject()
+    {
+        return collisionsWithGraspedObject;
     }
 
     public void IncreaseCollisionsWithGripper()
