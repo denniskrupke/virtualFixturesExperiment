@@ -10,10 +10,13 @@ public class visualFeedback_obstacle : MonoBehaviour {
     private GameObject targetObject;
     private Color originalColor;
 
+    private int gripperCollisionCount;
+
     // Use this for initialization
     void Start () {
         rend = GetComponent<Renderer>();
         originalColor = rend.material.color;
+        gripperCollisionCount = 0;
     }
 	
 	// Update is called once per frame
@@ -27,22 +30,34 @@ public class visualFeedback_obstacle : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("targetObject"))
-        {
-            //            UpdateGlobalErrorState(true);            
+        {         
             UpdateGlobalErrorCount();
             rend.material.color = Color.black;
         }
-    }
+        else if (other.gameObject.CompareTag("gripper")) {
+            if(gripperCollisionCount++ == 0){
+                Debug.Log("collision on the gripper");
+                UpdateGripperCollisionCount();  
+            }                
+        }        
+    }    
     
     private void OnTriggerExit(Collider other)
     {
-//        UpdateGlobalErrorState(false);
-        rend.material.color = originalColor;        
+        rend.material.color = originalColor; 
+        if (other.gameObject.CompareTag("gripper")) {
+            gripperCollisionCount--;
+        }
     }
 
     private void UpdateGlobalErrorCount() {
         GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>().errorCount++;
         Debug.Log(GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>().errorCount);
+    }
+
+    private void UpdateGripperCollisionCount(){
+        GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>().gripperCollisionCount++;
+        Debug.Log(GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>().gripperCollisionCount);   
     }
 
 //    private void UpdateGlobalErrorState(bool boolean) {

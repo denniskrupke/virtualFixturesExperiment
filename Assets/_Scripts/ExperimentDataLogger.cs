@@ -25,6 +25,7 @@ public class ExperimentDataFrame{
 //	public float minimum_distance_euklid_targetObject2targetArea; //how far is the user away from the cylinder in meter at selection time
 	//public bool error; //true, if obstacle is hit
 	public int errorCount; //number of collisions
+	public int gripperCollisionCount;
 	public long time; //time from pickup to drop at targetarea
 
 
@@ -63,6 +64,7 @@ public class ExperimentDataLogger : MonoBehaviour {
     public int handedness; // 0 = left handedness, 1 = right handedness - inserted manually
     public bool error; // public variable gets updated from visualFeedback_obstacle
     public int errorCount; // public variable gets updated from visualFeedback_obstacle
+    public int gripperCollisionCount;
     public List<float> minimum_distance_euklid_targetObject2obstacle_list; // public variable gets updated from visualFeedback_obstacle
 
 
@@ -126,6 +128,7 @@ public class ExperimentDataLogger : MonoBehaviour {
 //        experimentData.minimum_distance_euklid_targetObject2targetArea = Vector3.Distance(experimentData.position_targetObject, experimentData.position_targetArea);
 //        experimentData.error = error;
         experimentData.errorCount = errorCount;
+        experimentData.gripperCollisionCount = gripperCollisionCount;
         experimentData.time = experimentData.timeStamp_stop - experimentData.timeStamp_start;
 
         // set individual file name for every participant and course

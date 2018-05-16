@@ -165,6 +165,8 @@ public class ExperimentFileWriter : MonoBehaviour
 //        data += ",";
         data += frame.errorCount;
         data += ",";
+        data += frame.gripperCollisionCount;
+        data += ",";
         data += frame.time;
 
         return data;
