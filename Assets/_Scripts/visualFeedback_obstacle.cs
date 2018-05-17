@@ -5,6 +5,7 @@ using UnityEngine;
 public class visualFeedback_obstacle : MonoBehaviour {
     
     private GameObject targetObject;
+    private GameObject tcp;
     private Renderer rend;
     private Color originalColor;
 
@@ -12,7 +13,9 @@ public class visualFeedback_obstacle : MonoBehaviour {
     private bool graspedObjectIsCollidingWithObstacle;
 
     CollisionOnCompoundObstacle compoundObstacleHandler;
+    GameObject experimentController;
     ExperimentDataLogger experimentLogger;
+    RecordCollisions collisionRecorder;
 
     public bool visualizeCollisions = false;
 
@@ -22,12 +25,16 @@ public class visualFeedback_obstacle : MonoBehaviour {
         originalColor = rend.material.color;
         gripperCollisionCount = 0;
         graspedObjectIsCollidingWithObstacle = false;
-        compoundObstacleHandler = null;        
+        compoundObstacleHandler = null; 
+        experimentController = GameObject.Find("ExperimentController");
+        tcp = GameObject.Find("TCP");
+        targetObject = GameObject.FindGameObjectWithTag("targetObject");
+        collisionRecorder = experimentController.GetComponent<RecordCollisions>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        targetObject = GameObject.FindGameObjectWithTag("targetObject");
+        
 
         // calculating obstacle-targetObject distance
         //Append2GlobalObstacleDistance(MinimumObstacleDistance());
@@ -35,21 +42,21 @@ public class visualFeedback_obstacle : MonoBehaviour {
 
     void OnTriggerEnter(Collider other) {
         compoundObstacleHandler = gameObject.GetComponentInParent<CollisionOnCompoundObstacle>();
-        experimentLogger = GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>();
+        experimentLogger = experimentController.GetComponent<ExperimentDataLogger>();
 
         if (other.gameObject.CompareTag("targetObject")) //Collision with grasped object
         {
             if(compoundObstacleHandler != null) //compound obstacle
             {
                 if(compoundObstacleHandler.GetCollisionsWithGraspedObject() == 0) {                    
-                    UpdateGlobalErrorCount();                        
+                    UpdateGlobalErrorCount(other.name);                        
                     experimentLogger.SetColliding(true);        
                 }
                 compoundObstacleHandler.IncreaseCollisionsWithGraspedObject();                
             }
             else  {// simple obstacle
                 graspedObjectIsCollidingWithObstacle = true;
-                UpdateGlobalErrorCount();                
+                UpdateGlobalErrorCount(other.name);                
                 experimentLogger.SetColliding(true);        
             }
             if(visualizeCollisions) rend.material.color = Color.red;
@@ -59,14 +66,14 @@ public class visualFeedback_obstacle : MonoBehaviour {
                 {
                     if(compoundObstacleHandler.GetCollisionsWithGripper() == 0)
                     {                        
-                        if (experimentLogger.IsGrabbed()) UpdateGripperCollisionCount();
+                        if (experimentLogger.IsGrabbed()) UpdateGripperCollisionCount(other.name);
                         experimentLogger.SetColliding(true);
                     }
                     compoundObstacleHandler.IncreaseCollisionsWithGripper();
                 }
                 else {//simple obstacle
                 {
-                    if (gripperCollisionCount == 0 && experimentLogger.IsGrabbed()) UpdateGripperCollisionCount();    //causes counting collision
+                    if (gripperCollisionCount == 0 && experimentLogger.IsGrabbed()) UpdateGripperCollisionCount(other.name);    //causes counting collision
                     gripperCollisionCount++;
                     experimentLogger.SetColliding(true);    //causes haptic feedback
                 }
@@ -108,13 +115,15 @@ public class visualFeedback_obstacle : MonoBehaviour {
         }
     }
 
-    private void UpdateGlobalErrorCount() {
-        GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>().errorCount++;
-        Debug.Log("objectCollisions: " + experimentLogger.errorCount);
+    private void UpdateGlobalErrorCount(string other) {
+        experimentController.GetComponent<ExperimentDataLogger>().objectCollisionCount++;
+        collisionRecorder.AddCollision_graspedObject(targetObject.transform.position, other);
+        Debug.Log("objectCollisions: " + experimentLogger.objectCollisionCount);
     }
 
-    private void UpdateGripperCollisionCount(){
-        GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>().gripperCollisionCount++;
+    private void UpdateGripperCollisionCount(string other){
+        experimentController.GetComponent<ExperimentDataLogger>().gripperCollisionCount++;
+        collisionRecorder.AddCollision_gripper(tcp.transform.position, other);
         Debug.Log("gripperCollisions: " + experimentLogger.gripperCollisionCount);   
     }
 

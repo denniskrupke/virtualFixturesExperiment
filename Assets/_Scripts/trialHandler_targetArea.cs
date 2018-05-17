@@ -7,20 +7,24 @@ public class trialHandler_targetArea : MonoBehaviour {
     private GameObject targetObject;
     private GameObject UR5_Target;
     private bool isColliding;
+
+    private GameObject experimentController;
     private Fader fader;
-    
+    private ExperimentDataLogger dataLogger;
 
 
 	// Use this for initialization
 	void Start () {
-        fader = GameObject.Find("ExperimentController").GetComponent<Fader>();
+        experimentController = GameObject.Find("ExperimentController");
+        fader = experimentController.GetComponent<Fader>();
+        dataLogger = experimentController.GetComponent<ExperimentDataLogger>();
+        targetObject = GameObject.FindGameObjectWithTag("targetObject");
+        UR5_Target = GameObject.Find("UR5-Target");       
     }
 	
 	// Update is called once per frame
 	void Update () {
-		isColliding = false;
-        targetObject = GameObject.FindGameObjectWithTag("targetObject");
-        UR5_Target = GameObject.Find("UR5-Target");       
+		isColliding = false;        
     }   
 
 
@@ -29,26 +33,21 @@ public class trialHandler_targetArea : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("targetObject"))
         {
-        	if(isColliding) return;
-     		isColliding = true;
+            if(isColliding) return;
+         	isColliding = true;
 
             //Fading and back
             Debug.Log("fading");
             fader.Fade();
                 
-
-            // reset targetObject to startingPosition
-            targetObject.GetComponent<hapticFeedback_targetObject>().resetPosition();
-            // detach targetObject from UR5
-            UR5_Target.transform.DetachChildren();
             // update trial count on drop to change scene after trial 3 (0,1,2)
-            GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>().StopTrial();
-            GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>().UpdateDataFrame(); //dumps data to files
-		
-
-            // reset stopTimer to enable easier calculating numbers (trial times arer all positiv)s
-            GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>().experimentData.timeStamp_stop = 0;
-            GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>().trial++;
+            dataLogger.StopTrial();
+            dataLogger.UpdateDataFrame(); //dumps data to files
+    		dataLogger.trial++;
+            // reset stuff
+            targetObject.GetComponent<hapticFeedback_targetObject>().resetPosition();
+            UR5_Target.transform.DetachChildren();
+            dataLogger.ResetData();            
         }
     }
 }
