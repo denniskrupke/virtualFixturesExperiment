@@ -73,12 +73,17 @@ public class ExperimentDataLogger : MonoBehaviour {
     private bool startArgument = false;
 
 	private RecordPose targetPoseRecorder;
+    private RecordPose tcpPoseRecorder;
+    private RecordPose headPoseRecorder;
+
 
 
     // Use this for initialization
     void Start () {
 		experimentData = new ExperimentDataFrame();
 		targetPoseRecorder = GameObject.FindGameObjectWithTag ("targetObject").GetComponent<RecordPose> ();
+        tcpPoseRecorder = GameObject.Find("TCP").GetComponent<RecordPose>();
+        headPoseRecorder = GameObject.Find("Camera (eye)").GetComponent<RecordPose>();
         isColliding = false;
         isGrabbed = false;
     }
@@ -138,25 +143,55 @@ public class ExperimentDataLogger : MonoBehaviour {
         //experimentFileWriter.filename = "id_" + id_participant + "_" + experimentData.course + "_method_" + experimentData.method + ".csv";
         experimentFileWriter.AppendLineToFile(experimentFileWriter.ExperimentDataFrame2String(experimentData));
 
-		// write trajectories
-		experimentFileWriter.WriteTargetTrajectory(targetPoseRecorder.GetPoseList(), 
-			experimentData.id_participant,
-			experimentData.method,
-			experimentData.course,
-			experimentData.trial);
-		targetPoseRecorder.ClearData ();
-		experimentFileWriter.WritePrecisionList(GameObject.FindGameObjectWithTag ("course").GetComponent<FindClosestObstacle> ().GetAccuracyList (), 
-			experimentData.id_participant,
-			experimentData.method,
-			experimentData.course,
-			experimentData.trial);
-		GameObject.FindGameObjectWithTag ("course").GetComponent<FindClosestObstacle> ().ClearData ();
+        // write trajectories
+        WriteTrajectories();
+
+        experimentData.errorCount = 0;
+        experimentData.gripperCollisionCount = 0;
+        errorCount = 0;
+        gripperCollisionCount = 0;
+    }
+
+    private void WriteTrajectories()
+    {
+        experimentFileWriter.WriteTargetTrajectory("graspedObject",
+            targetPoseRecorder.GetPoseList(),
+            experimentData.id_participant,
+            experimentData.method,
+            experimentData.course,
+            experimentData.trial);
+        targetPoseRecorder.ClearData();
+
+        experimentFileWriter.WriteTargetTrajectory("tcp",
+            tcpPoseRecorder.GetPoseList(),
+            experimentData.id_participant,
+            experimentData.method,
+            experimentData.course,
+            experimentData.trial);
+        tcpPoseRecorder.ClearData();
+
+        experimentFileWriter.WriteTargetTrajectory("head",
+            headPoseRecorder.GetPoseList(),
+            experimentData.id_participant,
+            experimentData.method,
+            experimentData.course,
+            experimentData.trial);
+        headPoseRecorder.ClearData();
+
+        experimentFileWriter.WritePrecisionList(GameObject.FindGameObjectWithTag("course").GetComponent<FindClosestObstacle>().GetAccuracyList(),
+            experimentData.id_participant,
+            experimentData.method,
+            experimentData.course,
+            experimentData.trial);
+        GameObject.FindGameObjectWithTag("course").GetComponent<FindClosestObstacle>().ClearData();
     }
 
 	public void StartTrial(){
         print("StartTrial called");
         experimentData.UpdateStartTime();
 		targetPoseRecorder.StartRecording ();
+        tcpPoseRecorder.StartRecording();
+        headPoseRecorder.StartRecording();
         GameObject.FindGameObjectWithTag("course").GetComponent<FindClosestObstacle>().StartRecording();
     }
 
@@ -164,6 +199,8 @@ public class ExperimentDataLogger : MonoBehaviour {
         print("StopTrial called");
         experimentData.UpdateStopTime();    
 		targetPoseRecorder.StopRecording ();
+        tcpPoseRecorder.StopRecording();
+        headPoseRecorder.StopRecording();
         GameObject.FindGameObjectWithTag("course").GetComponent<FindClosestObstacle>().StopRecording();
     }
 

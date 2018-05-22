@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public class ExperimentFileWriter : MonoBehaviour
 {
     public string filename = "default.csv";
-    public string win_path = "D:/User/3slange/UnityProject/LabratorySetup";
+    public string win_path = "D:\\User\\krupke";
 
 	// Use this for initialization
     void Start()
@@ -44,9 +44,10 @@ public class ExperimentFileWriter : MonoBehaviour
     }
     */
 	
-	public void WriteTargetTrajectory(List<StampedPose> poses, int participant, int method, string course, int trial){
-		string path = Path.Combine(Application.persistentDataPath, "targetObject_" + participant + "_" + method + "_" + course + "_" + trial + ".csv");
-		using (StreamWriter writer = File.CreateText(path))
+	public void WriteTargetTrajectory(string objectName, List<StampedPose> poses, int participant, int method, string course, int trial){
+		//string path = Path.Combine(Application.persistentDataPath, "targetObject_" + participant + "_" + method + "_" + course + "_" + trial + ".csv");
+        string path = Path.Combine(win_path, "targetObject_" + objectName + "_" + participant + "_" + method + "_" + course + "_" + trial + ".csv");
+        using (StreamWriter writer = File.CreateText(path))
 		{
             if (poses.Count == 0) Debug.Log("no poses in the list");
 			foreach (StampedPose pose in poses) {
@@ -67,8 +68,9 @@ public class ExperimentFileWriter : MonoBehaviour
 
 	// TODO probably adding a timestamp
 	public void WritePrecisionList(List<KeyValuePair<float,bool> > precisionList, int participant, int method, string course, int trial){
-		string path = Path.Combine(Application.persistentDataPath, "precision_" + participant + "_" + method + "_" + course + "_" + trial + ".csv");
-		using (StreamWriter writer = File.CreateText(path))
+		//string path = Path.Combine(Application.persistentDataPath, "precision_" + participant + "_" + method + "_" + course + "_" + trial + ".csv");
+        string path = Path.Combine(win_path, "precision_" + participant + "_" + method + "_" + course + "_" + trial + ".csv");
+        using (StreamWriter writer = File.CreateText(path))
 		{
             if (precisionList.Count == 0) Debug.Log("no precision recordings in the list");
             foreach (KeyValuePair<float,bool> el in precisionList) {
@@ -86,8 +88,9 @@ public class ExperimentFileWriter : MonoBehaviour
 
     public void AppendLineToFile(string line)
     {
-        string path = Path.Combine(Application.persistentDataPath, this.filename);
-	
+        //string path = Path.Combine(Application.persistentDataPath, this.filename);
+        string path = Path.Combine(win_path, this.filename);
+
         using (StreamWriter writer = File.AppendText(path))
         {            
             writer.WriteLine(line);

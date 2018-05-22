@@ -54,10 +54,14 @@ public class ExperimentSceneManager : MonoBehaviour {
                 // reset course specific variables (new course name, trial and errorCount reset
                 currentScene = sceneNames [(int)nfmod (sceneIndex, modulator)];
 				GetComponent<ExperimentDataLogger> ().trial = 0;
-				GetComponent<ExperimentDataLogger> ().errorCount = 0;                
+				GetComponent<ExperimentDataLogger> ().errorCount = 0;      
+                if((int)nfmod(sceneIndex, modulator) == 4) UnityEditor.EditorApplication.isPaused = true;
             }
         }
-	}
+
+        if (UnityEditor.EditorApplication.isPaused) { } // show message to talk to the experimenter
+
+    }
 
 	// modulo function
 	private float nfmod(float a,float b)
