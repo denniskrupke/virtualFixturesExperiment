@@ -43,7 +43,7 @@ public class ExperimentSceneManager : MonoBehaviour {
 
         // if trial 0,1,2 are completed, load next scene in rotation (or manual scene change with spacebar)
 		if (GetComponent<ExperimentDataLogger>().trial > repetitions-1 || Input.GetKeyDown(KeyCode.Space)) {
-            SceneManager.UnloadSceneAsync (sceneNames [(int)nfmod(sceneIndex, modulator)]);
+            SceneManager.UnloadSceneAsync (sceneNames [(int)nfmod(sceneIndex, modulator)]);            
 
 			if (++sceneIndex >= sceneNames.Length)
 				UnityEditor.EditorApplication.isPlaying = false;

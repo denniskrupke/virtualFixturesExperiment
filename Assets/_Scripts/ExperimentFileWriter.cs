@@ -25,24 +25,7 @@ public class ExperimentFileWriter : MonoBehaviour
         print(Application.persistentDataPath);
     }
 
-    //Update is called once per frame
-    void Update()
-    {
 
-    }
-
-    /*
-    public void WriteTestFile()
-    {
-        string path = Path.Combine(Application.persistentDataPath, "TestFileMoop.txt");
-        using (StreamWriter writer = File.CreateText(path))
-        {
-            writer.WriteLine("0");
-            writer.Flush();
-            writer.Dispose();
-        }
-    }
-    */
 	
 	public void WriteTargetTrajectory(string objectName, List<StampedPose> poses, int participant, int method, string course, int trial){
 		//string path = Path.Combine(Application.persistentDataPath, "targetObject_" + participant + "_" + method + "_" + course + "_" + trial + ".csv");
@@ -54,11 +37,37 @@ public class ExperimentFileWriter : MonoBehaviour
 				string line = "";
 				line += pose.timeInMillis;
 				line += ",";
-				line += pose.position.x;
+				line += pose.position.x.ToString("R");
 				line += ",";
-				line += pose.position.y;
+				line += pose.position.y.ToString("R");
 				line += ",";
-				line += pose.position.z;
+				line += pose.position.z.ToString("R");
+
+                line += ",";
+                line += pose.rotation.x.ToString("R");
+                line += ",";
+                line += pose.rotation.y.ToString("R");
+                line += ",";
+                line += pose.rotation.z.ToString("R");
+                line += ",";
+                line += pose.rotation.w.ToString("R");
+
+                line += ",";
+                line += pose.euler.x.ToString("R");
+                line += ",";
+                line += pose.euler.y.ToString("R");
+                line += ",";
+                line += pose.euler.z.ToString("R");
+
+                line += ",";
+                line += pose.forward.x.ToString("R");
+                line += ",";
+                line += pose.forward.y.ToString("R");
+                line += ",";
+                line += pose.forward.z.ToString("R");
+
+                line += ",";
+                line += pose.timeInMillis;
 				writer.WriteLine (line);
 			}
 			writer.Flush();
@@ -75,7 +84,7 @@ public class ExperimentFileWriter : MonoBehaviour
             if (precisionList.Count == 0) Debug.Log("no precision recordings in the list");
             foreach (KeyValuePair<float,bool> el in precisionList) {
 				string line = "";
-				line += el.Key;
+				line += el.Key.ToString("R");
 				line += ",";
 				line += el.Value;
 				writer.WriteLine (line);
@@ -84,6 +93,30 @@ public class ExperimentFileWriter : MonoBehaviour
 			writer.Dispose();
 		}
 	}
+
+
+    public void WriteCollisionList(string type, List<StampedCollision> collisionList, int participant, int method, string course, int trial){
+        string path = Path.Combine(Application.persistentDataPath, "collision_" + type + "_" + participant + "_" + method + "_" + course + "_" + trial + ".csv");
+        using (StreamWriter writer = File.CreateText(path))
+        {
+            if (collisionList.Count == 0) Debug.Log("no collision recordings in the list");
+            foreach (StampedCollision col in collisionList) {
+                string line = "";
+                line += col.timeInMillis;
+                line += ",";
+                line += col.position.x.ToString("R");
+                line += ",";
+                line += col.position.y.ToString("R");
+                line += ",";
+                line += col.position.z.ToString("R");
+                line += ",";                
+                line += col.other;
+                writer.WriteLine (line);
+            }
+            writer.Flush();
+            writer.Dispose();
+        }   
+    }
 
 
     public void AppendLineToFile(string line)
@@ -98,6 +131,7 @@ public class ExperimentFileWriter : MonoBehaviour
             writer.Dispose();
         }        
     }
+
 
     public string ExperimentDataFrame2String(ExperimentDataFrame frame)
     {
@@ -116,61 +150,11 @@ public class ExperimentFileWriter : MonoBehaviour
         data += ",";
         data += frame.timeStamp_stop;
         data += ",";
-//        data += "[";
-//        data += frame.position_targetObject.x;
-//        data += ",";
-//        data += frame.position_targetObject.y;
-//        data += ",";
-//        data += frame.position_targetObject.z;
-//        data += "]";
-//        data += ",";
-//        data += "[";
-//        data += frame.position_targetArea.x;
-//        data += ",";
-//        data += frame.position_targetArea.y;
-//        data += ",";
-//        data += frame.position_targetArea.z;
-//        data += "]";
-//        data += ",";
-//        data += "[";
-//        data += frame.position_user_eye.x;
-//        data += ",";
-//        data += frame.position_user_eye.y;
-//        data += ",";
-//        data += frame.position_user_eye.z;
-//        data += "]";
-//        data += ",";
-//        data += "[";
-//        data += frame.position_user_controller.x;
-//        data += ",";
-//        data += frame.position_user_controller.y;
-//        data += ",";
-//        data += frame.position_user_controller.z;
-//        data += "]";
-//        data += ",";
-//        data += frame.ur5_shoulder_pan_joint;
-//        data += ",";
-//        data += frame.ur5_shoulder_lift_joint;
-//        data += ",";
-//        data += frame.ur5_elbow_joint;
-//        data += ",";
-//        data += frame.ur5_wrist_1_joint;
-//        data += ",";
-//		data += frame.ur5_wrist_2_joint;
-//        data += ",";
-//        data += frame.ur5_wrist_3_joint;
-//        data += ",";
-//        data += frame.minimum_distance_euklid_targetObject2obstacle;
-//        data += ",";
-//        data += frame.minimum_distance_euklid_targetObject2targetArea;
-//        data += ",";
-//        data += frame.error;
-//        data += ",";
-        data += frame.errorCount;
+        data += frame.objectCollisionCount;
         data += ",";
         data += frame.gripperCollisionCount;
         data += ",";
-        data += frame.time;
+        data += frame.duration;
 
         return data;
     }
