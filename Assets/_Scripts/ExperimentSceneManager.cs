@@ -54,8 +54,9 @@ public class ExperimentSceneManager : MonoBehaviour {
                 // reset course specific variables (new course name, trial and errorCount reset
                 currentScene = sceneNames [(int)nfmod (sceneIndex, modulator)];
 				GetComponent<ExperimentDataLogger> ().trial = 0;
-				GetComponent<ExperimentDataLogger> ().errorCount = 0;      
-                if((int)nfmod(sceneIndex, modulator) == 4) UnityEditor.EditorApplication.isPaused = true;
+				GetComponent<ExperimentDataLogger> ().gripperCollisionCount = 0;
+                GetComponent<ExperimentDataLogger>().objectCollisionCount = 0;
+                if ((int)nfmod(sceneIndex, modulator) == 4) UnityEditor.EditorApplication.isPaused = true;
             }
         }
 

@@ -118,13 +118,13 @@ public class visualFeedback_obstacle : MonoBehaviour {
     private void UpdateGlobalErrorCount(string other) {
         experimentController.GetComponent<ExperimentDataLogger>().objectCollisionCount++;
         collisionRecorder.AddCollision_graspedObject(targetObject.transform.position, other);
-        Debug.Log("objectCollisions: " + experimentLogger.objectCollisionCount);
+        //Debug.Log("objectCollisions: " + experimentLogger.objectCollisionCount);
     }
 
     private void UpdateGripperCollisionCount(string other){
         experimentController.GetComponent<ExperimentDataLogger>().gripperCollisionCount++;
         collisionRecorder.AddCollision_gripper(tcp.transform.position, other);
-        Debug.Log("gripperCollisions: " + experimentLogger.gripperCollisionCount);   
+        //Debug.Log("gripperCollisions: " + experimentLogger.gripperCollisionCount);   
     }
 
 //    private void UpdateGlobalErrorState(bool boolean) {

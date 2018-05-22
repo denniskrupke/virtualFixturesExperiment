@@ -95,8 +95,10 @@ public class ExperimentFileWriter : MonoBehaviour
 	}
 
 
+    // TODO write the duration of the collision as well
     public void WriteCollisionList(string type, List<StampedCollision> collisionList, int participant, int method, string course, int trial){
-        string path = Path.Combine(Application.persistentDataPath, "collision_" + type + "_" + participant + "_" + method + "_" + course + "_" + trial + ".csv");
+        //Debug.Log("writing collisions");
+        string path = Path.Combine(win_path, "collision_" + type + "_" + participant + "_" + method + "_" + course + "_" + trial + ".csv");
         using (StreamWriter writer = File.CreateText(path))
         {
             if (collisionList.Count == 0) Debug.Log("no collision recordings in the list");

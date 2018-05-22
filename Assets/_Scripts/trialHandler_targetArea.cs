@@ -37,7 +37,7 @@ public class trialHandler_targetArea : MonoBehaviour {
          	isColliding = true;
 
             //Fading and back
-            Debug.Log("fading");
+            //Debug.Log("fading");
             fader.Fade();
                 
             // update trial count on drop to change scene after trial 3 (0,1,2)
