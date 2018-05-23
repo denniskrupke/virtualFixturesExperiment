@@ -49,10 +49,10 @@ public class visualFeedback_obstacle : MonoBehaviour {
             if(compoundObstacleHandler != null) //compound obstacle
             {
                 if(compoundObstacleHandler.GetCollisionsWithGraspedObject() == 0) {  // only the first enter causes a collision count                  
-                    UpdateGlobalErrorCount(other.name);                        
-                    compoundObstacleHandler.IncreaseCollisionsWithGraspedObject();                
-                    experimentLogger.SetColliding(true);        
+                    UpdateGlobalErrorCount(other.name);                                                                
                 }
+                experimentLogger.SetColliding(true);
+                compoundObstacleHandler.IncreaseCollisionsWithGraspedObject();
             }
             else  {// simple obstacle
                 graspedObjectIsCollidingWithObstacle = true;
@@ -67,21 +67,21 @@ public class visualFeedback_obstacle : MonoBehaviour {
                     if(compoundObstacleHandler.GetCollisionsWithGripper() == 0) // only the first enter causes a collision count                  
                     {                        
                         if (experimentLogger.IsGrabbed()) {
-                            UpdateGripperCollisionCount(other.name);
-                            compoundObstacleHandler.IncreaseCollisionsWithGripper();
-                            experimentLogger.SetColliding(true);
-                        }
+                            UpdateGripperCollisionCount(other.name);                                                        
+                        }                    
                     }
-                }
+                    experimentLogger.SetColliding(true);
+                    compoundObstacleHandler.IncreaseCollisionsWithGripper();
+            }
                 else {//simple obstacle
                 {
                     if (gripperCollisionCount == 0) {
                         if (experimentLogger.IsGrabbed()) {
-                            UpdateGripperCollisionCount(other.name);    //causes counting collision
-                            gripperCollisionCount++;
-                            experimentLogger.SetColliding(true);    //causes haptic feedback
+                            UpdateGripperCollisionCount(other.name);    //causes counting collision                            
                         }
                     }
+                    gripperCollisionCount++;
+                    experimentLogger.SetColliding(true);    //causes haptic feedback
                 }
             }                
         }        
