@@ -34,7 +34,7 @@ public class RecordCollisions : MonoBehaviour {
 	public void AddCollision_graspedObject(Vector3 pos, string other){
         //Debug.Log("adding object collision");
 		StampedCollision collision = new StampedCollision ();
-		collision.position = transform.position;		
+		collision.position = pos;		
 		collision.other = other;	
 		collision.timeInMillis = ExperimentDataLogger.CalculateCurrentTimeStamp();
 		collisionList_graspedObject.Add (collision);
@@ -44,7 +44,7 @@ public class RecordCollisions : MonoBehaviour {
 	public void AddCollision_gripper(Vector3 pos, string other){
         //Debug.Log("adding gripper collision");
         StampedCollision collision = new StampedCollision ();
-		collision.position = transform.position;		
+		collision.position = pos;		
 		collision.other = other;	
 		collision.timeInMillis = ExperimentDataLogger.CalculateCurrentTimeStamp();
 		collisionList_gripper.Add (collision);

@@ -38,36 +38,36 @@ public class ExperimentFileWriter : MonoBehaviour
         using (StreamWriter writer = File.CreateText(path))
 		{         
             string line = "";
-            line += "timestamp";
+            line += "\"timestamp\"";
             line += ",";
-            line += "x_pos";
+            line += "\"x_pos\"";
             line += ",";
-            line += "y_pos";
+            line += "\"y_pos\"";
             line += ",";
-            line += "z_pos";
+            line += "\"z_pos\"";
 
             line += ",";
-            line += "quat_x";
+            line += "\"quat_x\"";
             line += ",";
-            line += "quat_y";
+            line += "\"quat_y\"";
             line += ",";
-            line += "quat_z";
+            line += "\"quat_z\"";
             line += ",";
-            line += "quat_w";
+            line += "\"quat_w\"";
 
             line += ",";
-            line += "roll";
+            line += "\"roll\"";
             line += ",";
-            line += "yaw";
+            line += "\"yaw\"";
             line += ",";
-            line += "pitch";
+            line += "\"pitch\"";
 
             line += ",";
-            line += "forward_x";
+            line += "\"forward_x\"";
             line += ",";
-            line += "forward_y";
+            line += "\"forward_y\"";
             line += ",";
-            line += "forward_z";
+            line += "\"forward_z\"";
             writer.WriteLine (line);   
 			foreach (StampedPose pose in poses) {
 				line = "";
@@ -107,10 +107,11 @@ public class ExperimentFileWriter : MonoBehaviour
 			writer.Dispose();
 		}
 	}
-
-	// TODO probably adding a timestamp
-	public void WritePrecisionList(List<KeyValuePair<float,bool> > precisionList, int participant, int method, string course, int trial){
-        if (precisionList.Count == 0) {
+	
+	//public void WritePrecisionList(List<KeyValuePair<float,bool> > precisionList, int participant, int method, string course, int trial){
+    public void WritePrecisionList(List<AccuracyFrame> precisionList, int participant, int method, string course, int trial)
+        {
+            if (precisionList.Count == 0) {
             Debug.Log("no precision recordings in the list");
             return;
         }
@@ -120,15 +121,21 @@ public class ExperimentFileWriter : MonoBehaviour
         using (StreamWriter writer = File.CreateText(path))
 		{        
             string line = "";
-            line += "shortestDistance";
+            line += "\"timestamp\"";
             line += ",";
-            line += "didCollide";
+            line += "\"shortestDistance\"";
+            line += ",";
+            line += "\"didCollide\"";
             writer.WriteLine (line);    
-            foreach (KeyValuePair<float,bool> el in precisionList) {
-				line = "";
-				line += el.Key.ToString("R");
+            //foreach (KeyValuePair<float,bool> el in precisionList) {
+            foreach (AccuracyFrame af in precisionList)
+            {
+                line = "";
+                line += af.timestamp;
+                line += ",";
+                line += af.distance.ToString("R");
 				line += ",";
-				line += el.Value;
+				line += af.isColliding;
 				writer.WriteLine (line);
 			}
 			writer.Flush();
@@ -148,15 +155,15 @@ public class ExperimentFileWriter : MonoBehaviour
         using (StreamWriter writer = File.CreateText(path))
         {            
             string line = "";
-            line += "TimeOfCollision";
+            line += "\"TimeOfCollision\"";
             line += ",";
-            line += "x";
+            line += "\"x\"";
             line += ",";
-            line += "y";
+            line += "\"y\"";
             line += ",";
-            line += "z";
+            line += "\"z\"";
             line += ",";                
-            line += "other";
+            line += "\"other\"";
             writer.WriteLine (line);
             foreach (StampedCollision col in collisionList) {
                 line = "";

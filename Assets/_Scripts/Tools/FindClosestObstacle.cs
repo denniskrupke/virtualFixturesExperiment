@@ -2,25 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public class AccuracyFrame
+{
+    public float distance;
+    public bool isColliding;
+    public long timestamp;
+}
+
 public class FindClosestObstacle : MonoBehaviour {
 
 	GameObject closestObject;
 	float closestDistance;
 	bool recording = false;
-	List<KeyValuePair<float,bool>> accuracyList;
-	//List<float> distanceList;
-	//List<bool> collisionList;
-	ExperimentDataLogger dataLogger;
+	//List<KeyValuePair<float,bool>> accuracyList;
+    List<AccuracyFrame> accuracyList;
+    //List<float> distanceList;
+    //List<bool> collisionList;
+    ExperimentDataLogger dataLogger;
 
 
 	// Use this for initialization
 	void Start () {		
 		closestDistance = float.MaxValue;
 		closestObject = this.transform.gameObject;
-		accuracyList = new List<KeyValuePair<float, bool> >();
-	//	distanceList = new List<float>();
-	//	collisionList = new List<bool>();
-		dataLogger = GameObject.FindGameObject("ExperiementController").GetComponent<ExperimentDataLogger>();
+		//accuracyList = new List<KeyValuePair<float, bool> >();
+        accuracyList = new List<AccuracyFrame>();
+        //	distanceList = new List<float>();
+        //	collisionList = new List<bool>();
+        dataLogger = GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>();
 	}
 	
 	// Update is called once per frame
@@ -40,9 +49,14 @@ public class FindClosestObstacle : MonoBehaviour {
 			//Debug.Log (closestDistance);
 		}
 		if (recording) {
-			//bool colliding = GameObject.FindGameObjectWithTag ("targetObject").GetComponent<CheckForCollision> ().IsColliding ();
-			//accuracyList.Add(new KeyValuePair<float, bool>(closestDistance, colliding));
-			accuracyList.Add(new KeyValuePair<float, bool>(closestDistance, dataLogger.IsColliding()));
+            //bool colliding = GameObject.FindGameObjectWithTag ("targetObject").GetComponent<CheckForCollision> ().IsColliding ();
+            //accuracyList.Add(new KeyValuePair<float, bool>(closestDistance, colliding));
+            AccuracyFrame af = new AccuracyFrame();
+            af.distance = closestDistance;
+            af.isColliding = dataLogger.IsColliding();
+            af.timestamp = ExperimentDataLogger.CalculateCurrentTimeStamp();
+            accuracyList.Add(af);
+            //accuracyList.Add(new KeyValuePair<float, bool>(closestDistance, dataLogger.IsColliding()));
 			//distanceList.Add (closestDistance);
 			//collisionList.Add (closestObject.GetComponent<Collider>().)
 			// TODO: mark collision
@@ -73,8 +87,14 @@ public class FindClosestObstacle : MonoBehaviour {
 		closestObject = this.transform.gameObject;
 	}
 
+    /*
 	public List<KeyValuePair<float,bool>> GetAccuracyList(){
 		return accuracyList;
 	}
+    */
 
+    public List<AccuracyFrame> GetAccuracyList()
+    {
+        return accuracyList;
+    }
 }
