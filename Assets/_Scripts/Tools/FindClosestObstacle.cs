@@ -10,6 +10,7 @@ public class FindClosestObstacle : MonoBehaviour {
 	List<KeyValuePair<float,bool>> accuracyList;
 	//List<float> distanceList;
 	//List<bool> collisionList;
+	ExperimentDataLogger dataLogger;
 
 
 	// Use this for initialization
@@ -19,6 +20,7 @@ public class FindClosestObstacle : MonoBehaviour {
 		accuracyList = new List<KeyValuePair<float, bool> >();
 	//	distanceList = new List<float>();
 	//	collisionList = new List<bool>();
+		dataLogger = GameObject.FindGameObject("ExperiementController").GetComponent<ExperimentDataLogger>();
 	}
 	
 	// Update is called once per frame
@@ -38,8 +40,9 @@ public class FindClosestObstacle : MonoBehaviour {
 			//Debug.Log (closestDistance);
 		}
 		if (recording) {
-			bool colliding = GameObject.FindGameObjectWithTag ("targetObject").GetComponent<CheckForCollision> ().IsColliding ();
-			accuracyList.Add(new KeyValuePair<float, bool>(closestDistance, colliding));
+			//bool colliding = GameObject.FindGameObjectWithTag ("targetObject").GetComponent<CheckForCollision> ().IsColliding ();
+			//accuracyList.Add(new KeyValuePair<float, bool>(closestDistance, colliding));
+			accuracyList.Add(new KeyValuePair<float, bool>(closestDistance, dataLogger.IsColliding()));
 			//distanceList.Add (closestDistance);
 			//collisionList.Add (closestObject.GetComponent<Collider>().)
 			// TODO: mark collision
