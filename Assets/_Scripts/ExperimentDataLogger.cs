@@ -189,7 +189,7 @@ public class ExperimentDataLogger : MonoBehaviour {
         experimentData.objectCollisionCount = 0;
         experimentData.gripperCollisionCount = 0;
 
-        //collisionRecorder.ClearData();
+        collisionRecorder.ClearData();
         targetPoseRecorder.ClearData();
         tcpPoseRecorder.ClearData();
         headPoseRecorder.ClearData();
