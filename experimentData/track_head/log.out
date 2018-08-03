@@ -1,0 +1,4 @@
+function (save = "default", status = 0, runLast = TRUE) 
+.Internal(quit(save, status, runLast))
+<bytecode: 0x7fa7fcd22d48>
+<environment: namespace:base>

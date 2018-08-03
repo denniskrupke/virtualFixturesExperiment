@@ -1,0 +1,1186 @@
+[1] "AttrakDiff pq mean:"
+[1] 5.301021
+[1] 5.341832
+[1] "AttrakDiff hq mean:"
+[1] 4.326532
+[1] 4.566329
+[1] "AttrakDiff pq sd:"
+[1] 0.6760593
+[1] 0.7818246
+[1] "AttrakDiff hq sd:"
+[1] 0.6950915
+[1] 0.683734
+[1] "---pq--"
+[1] 4.624962
+[1] 5.977081
+[1] "---pq-vf--"
+[1] 4.560008
+[1] 6.123657
+[1] "---hq--"
+[1] 3.631441
+[1] 5.021624
+[1] "---hq-vf--"
+[1] 3.882595
+[1] 5.250063
+[1] "-------------------Determine outliers-------------------------"
+[1] "...done"
+[1] "------------------Check normality on raw data---------------------"
+[1] "Shapiro-Wilk-sus_pq:"
+
+	Shapiro-Wilk normality test
+
+data:  data$sus_pq
+W = 0.98948, p-value = 0.9909
+
+[1] "sus_pq_vf"
+
+	Shapiro-Wilk normality test
+
+data:  data$sus_pq_vf
+W = 0.94761, p-value = 0.1724
+
+[1] "sus"
+
+	Shapiro-Wilk normality test
+
+data:  data$sus
+W = 0.9485, p-value = 0.1816
+
+[1] "sus_vf"
+
+	Shapiro-Wilk normality test
+
+data:  data$sus_vf
+W = 0.94472, p-value = 0.1457
+
+[1] "attrakDiff2_att"
+
+	Shapiro-Wilk normality test
+
+data:  data$attrakDiff2_att
+W = 0.97187, p-value = 0.6317
+
+[1] "attrakDiff2_pq"
+
+	Shapiro-Wilk normality test
+
+data:  data$attrakDiff2_pq
+W = 0.96546, p-value = 0.4654
+
+[1] "attrakDiff2_hqi"
+
+	Shapiro-Wilk normality test
+
+data:  data$attrakDiff2_hqi
+W = 0.95219, p-value = 0.2248
+
+[1] "attrakDiff2_hqs"
+
+	Shapiro-Wilk normality test
+
+data:  data$attrakDiff2_hqs
+W = 0.94457, p-value = 0.1444
+
+[1] "attrakDiff2_hq"
+
+	Shapiro-Wilk normality test
+
+data:  data$attrakDiff2_hq
+W = 0.95271, p-value = 0.2316
+
+[1] "attrakDiff2_vf_att"
+
+	Shapiro-Wilk normality test
+
+data:  data$attrakDiff2_vf_att
+W = 0.97643, p-value = 0.7581
+
+[1] "attrakDiff2_vf_pq"
+
+	Shapiro-Wilk normality test
+
+data:  data$attrakDiff2_vf_pq
+W = 0.90869, p-value = 0.01839
+
+[1] "attrakDiff2_vf_hqi"
+
+	Shapiro-Wilk normality test
+
+data:  data$attrakDiff2_vf_hqi
+W = 0.97361, p-value = 0.6797
+
+[1] "attrakDiff2_vf_hqs"
+
+	Shapiro-Wilk normality test
+
+data:  data$attrakDiff2_vf_hqs
+W = 0.94671, p-value = 0.1637
+
+[1] "attrakDiff2_vf_hq"
+
+	Shapiro-Wilk normality test
+
+data:  data$attrakDiff2_vf_hq
+W = 0.9268, p-value = 0.05124
+
+[1] "tlx_ment"
+
+	Shapiro-Wilk normality test
+
+data:  data$tlx_ment
+W = 0.94957, p-value = 0.1933
+
+[1] "tlx_phys"
+
+	Shapiro-Wilk normality test
+
+data:  data$tlx_phys
+W = 0.9563, p-value = 0.284
+
+[1] "tlx_temp"
+
+	Shapiro-Wilk normality test
+
+data:  data$tlx_temp
+W = 0.9455, p-value = 0.1525
+
+[1] "tlx_perf"
+
+	Shapiro-Wilk normality test
+
+data:  data$tlx_perf
+W = 0.93147, p-value = 0.06713
+
+[1] "tlx_eff"
+
+	Shapiro-Wilk normality test
+
+data:  data$tlx_eff
+W = 0.92924, p-value = 0.059
+
+[1] "tlx_frust"
+
+	Shapiro-Wilk normality test
+
+data:  data$tlx_frust
+W = 0.92523, p-value = 0.04679
+
+[1] "tlx_score"
+
+	Shapiro-Wilk normality test
+
+data:  data$tlx_score
+W = 0.97961, p-value = 0.841
+
+[1] "tlx_vf_ment"
+
+	Shapiro-Wilk normality test
+
+data:  data$tlx_vf_ment
+W = 0.94334, p-value = 0.1344
+
+[1] "tlx_vf_phys"
+
+	Shapiro-Wilk normality test
+
+data:  data$tlx_vf_phys
+W = 0.96671, p-value = 0.4957
+
+[1] "tlx_vf_temp"
+
+	Shapiro-Wilk normality test
+
+data:  data$tlx_vf_temp
+W = 0.9524, p-value = 0.2275
+
+[1] "tlx_vf_perf"
+
+	Shapiro-Wilk normality test
+
+data:  data$tlx_vf_perf
+W = 0.94248, p-value = 0.1278
+
+[1] "tlx_vf_eff"
+
+	Shapiro-Wilk normality test
+
+data:  data$tlx_vf_eff
+W = 0.92089, p-value = 0.03649
+
+[1] "tlx_vf_frust"
+
+	Shapiro-Wilk normality test
+
+data:  data$tlx_vf_frust
+W = 0.94886, p-value = 0.1855
+
+[1] "tlx_vf_score"
+
+	Shapiro-Wilk normality test
+
+data:  data$tlx_vf_score
+W = 0.96459, p-value = 0.4452
+
+[1] "sart_s"
+
+	Shapiro-Wilk normality test
+
+data:  data$sart_s
+W = 0.97928, p-value = 0.8328
+
+[1] "sart_d"
+
+	Shapiro-Wilk normality test
+
+data:  data$sart_d
+W = 0.93895, p-value = 0.1039
+
+[1] "sart_u"
+
+	Shapiro-Wilk normality test
+
+data:  data$sart_u
+W = 0.98604, p-value = 0.9623
+
+[1] "sart_sa"
+
+	Shapiro-Wilk normality test
+
+data:  data$sart_sa
+W = 0.96392, p-value = 0.43
+
+[1] "sart_vf_s"
+
+	Shapiro-Wilk normality test
+
+data:  data$sart_vf_s
+W = 0.94306, p-value = 0.1322
+
+[1] "sart_vf_d"
+
+	Shapiro-Wilk normality test
+
+data:  data$sart_vf_d
+W = 0.92105, p-value = 0.03682
+
+[1] "sart_vf_u"
+
+	Shapiro-Wilk normality test
+
+data:  data$sart_vf_u
+W = 0.94808, p-value = 0.1773
+
+[1] "sart_vf_sa"
+
+	Shapiro-Wilk normality test
+
+data:  data$sart_vf_sa
+W = 0.97059, p-value = 0.5965
+
+[1] "...done"
+[1] "------------------------Check significance/p-values on raw data---------------------------"
+[1] "sus_pq"
+
+	Paired t-test
+
+data:  data$sus_pq and data$sus_pq_vf
+t = 0.59048, df = 27, p-value = 0.5598
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.1326091  0.2397733
+sample estimates:
+mean of the differences 
+             0.05358214 
+
+[1] "sus"
+
+	Paired t-test
+
+data:  data$sus and data$sus_vf
+t = 0.30539, df = 27, p-value = 0.7624
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -2.042385  2.756671
+sample estimates:
+mean of the differences 
+              0.3571429 
+
+[1] "attrakDiff2_att"
+
+	Paired t-test
+
+data:  data$attrakDiff2_att and data$attrakDiff2_vf_att
+t = -0.82739, df = 27, p-value = 0.4153
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.3728568  0.1585640
+sample estimates:
+mean of the differences 
+             -0.1071464 
+
+[1] "attrakDiff2_pq"
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  data$attrakDiff2_pq and data$attrakDiff2_vf_pq
+V = 192.5, p-value = 0.9424
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "attrakDiff2_hqi"
+
+	Paired t-test
+
+data:  data$attrakDiff2_hqi and data$attrakDiff2_vf_hqi
+t = -2.2255, df = 27, p-value = 0.03459
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.46088991 -0.01871009
+sample estimates:
+mean of the differences 
+                -0.2398 
+
+[1] "attrakDiff2_hqs"
+
+	Paired t-test
+
+data:  data$attrakDiff2_hqs and data$attrakDiff2_vf_hqs
+t = -2.1152, df = 27, p-value = 0.04379
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.472417572 -0.007182428
+sample estimates:
+mean of the differences 
+                -0.2398 
+
+[1] "attrakDiff2_hq"
+
+	Paired t-test
+
+data:  data$attrakDiff2_hq and data$attrakDiff2_vf_hq
+t = -2.939, df = 27, p-value = 0.006669
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.40720642 -0.07238643
+sample estimates:
+mean of the differences 
+             -0.2397964 
+
+[1] "tlx_ment"
+
+	Paired t-test
+
+data:  data$tlx_ment and data$tlx_vf_ment
+t = -1.5076, df = 27, p-value = 0.1433
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.8432251  0.1289394
+sample estimates:
+mean of the differences 
+             -0.3571429 
+
+[1] "tlx_ment"
+
+	Paired t-test
+
+data:  data$tlx_ment and data$tlx_vf_ment
+t = -1.5076, df = 27, p-value = 0.1433
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.8432251  0.1289394
+sample estimates:
+mean of the differences 
+             -0.3571429 
+
+[1] "tlx_phys"
+
+	Paired t-test
+
+data:  data$tlx_phys and data$tlx_vf_phys
+t = 1.4348, df = 27, p-value = 0.1628
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.1689536  0.9546679
+sample estimates:
+mean of the differences 
+              0.3928571 
+
+[1] "tlx_temp"
+
+	Paired t-test
+
+data:  data$tlx_temp and data$tlx_vf_temp
+t = -1.6736, df = 27, p-value = 0.1058
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.7950077  0.0807220
+sample estimates:
+mean of the differences 
+             -0.3571429 
+
+[1] "tlx_perf"
+
+	Paired t-test
+
+data:  data$tlx_perf and data$tlx_vf_perf
+t = 0.36631, df = 27, p-value = 0.717
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.4930085  0.7072942
+sample estimates:
+mean of the differences 
+              0.1071429 
+
+[1] "tlx_eff"
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  data$tlx_eff and data$tlx_vf_eff
+V = 86, p-value = 1
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "tlx_ment"
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  data$tlx_frust and data$tlx_vf_frust
+V = 80.5, p-value = 0.2244
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "tlx_score"
+
+	Paired t-test
+
+data:  data$tlx_score and data$tlx_vf_score
+t = -0.7284, df = 27, p-value = 0.4726
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -4.316732  2.054832
+sample estimates:
+mean of the differences 
+               -1.13095 
+
+[1] "sart_s"
+
+	Paired t-test
+
+data:  data$sart_s and data$sart_vf_s
+t = 0.036371, df = 27, p-value = 0.9713
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -1.979094  2.050522
+sample estimates:
+mean of the differences 
+             0.03571429 
+
+[1] "sart_d"
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  data$sart_d and data$sart_vf_d
+V = 169.5, p-value = 0.8884
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "sart_u"
+
+	Paired t-test
+
+data:  data$sart_u and data$sart_vf_u
+t = -0.90812, df = 27, p-value = 0.3719
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -2.328164  0.899593
+sample estimates:
+mean of the differences 
+             -0.7142857 
+
+[1] "sart_sa"
+
+	Paired t-test
+
+data:  data$sart_sa and data$sart_vf_sa
+t = -0.042397, df = 27, p-value = 0.9665
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -3.528282  3.385425
+sample estimates:
+mean of the differences 
+            -0.07142857 
+
+[1] "...done"
+[1] "------------------Check Baysian Factor of means---------------------"
+[1] "sus_pq"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 0.235305 ±0.01%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "sus"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 0.2092941 ±0.01%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "attrakDiff2_att"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 0.2740601 ±0.01%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "attrakDiff2_pq"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 0.2095718 ±0.01%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "attrakDiff2_hqi"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 1.649244 ±0%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "attrakDiff2_hqs"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 1.364814 ±0%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "attrakDiff2_hq"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 6.498202 ±0%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "tlx_ment"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 0.5504197 ±0%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "tlx_ment"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 0.5504197 ±0%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "tlx_phys"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 0.5021182 ±0%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "tlx_temp"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 0.688449 ±0%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "tlx_perf"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 0.2132743 ±0.01%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "tlx_eff"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 0.222904 ±0.01%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "tlx_ment"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 0.3613609 ±0.02%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "tlx_score"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 0.2556141 ±0.01%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "sart_s"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 0.2005988 ±0%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "sart_d"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 0.248346 ±0.01%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "sart_u"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 0.2918988 ±0.02%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "sart_sa"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 0.2006429 ±0%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "...done"
+[1] "------------------Removing outliers---------------------"
+[1] "...done"
+[1] "------------------Check normality on data without outliers---------------------"
+[1] "Shapiro-Wilk-sus_pq:"
+
+	Shapiro-Wilk normality test
+
+data:  sus_pq_clean
+W = 0.98948, p-value = 0.9909
+
+[1] "sus_pq_vf"
+
+	Shapiro-Wilk normality test
+
+data:  sus_pq_vf_clean
+W = 0.94761, p-value = 0.1724
+
+[1] "sus"
+
+	Shapiro-Wilk normality test
+
+data:  sus_clean
+W = 0.9485, p-value = 0.1816
+
+[1] "sus_vf"
+
+	Shapiro-Wilk normality test
+
+data:  sus_vf_clean
+W = 0.96746, p-value = 0.5363
+
+[1] "attrakDiff2_att"
+
+	Shapiro-Wilk normality test
+
+data:  attrakDiff2_att_clean
+W = 0.97187, p-value = 0.6317
+
+[1] "attrakDiff2_pq"
+
+	Shapiro-Wilk normality test
+
+data:  attrakDiff2_pq_clean
+W = 0.97834, p-value = 0.8231
+
+[1] "attrakDiff2_hqi"
+
+	Shapiro-Wilk normality test
+
+data:  attrakDiff2_hqi_clean
+W = 0.95219, p-value = 0.2248
+
+[1] "attrakDiff2_hqs"
+
+	Shapiro-Wilk normality test
+
+data:  attrakDiff2_hqs_clean
+W = 0.92291, p-value = 0.04641
+
+[1] "attrakDiff2_hq"
+
+	Shapiro-Wilk normality test
+
+data:  attrakDiff2_hq_clean
+W = 0.96467, p-value = 0.4691
+
+[1] "attrakDiff2_vf_att"
+
+	Shapiro-Wilk normality test
+
+data:  attrakDiff2_vf_att_clean
+W = 0.96475, p-value = 0.4709
+
+[1] "attrakDiff2_vf_pq"
+
+	Shapiro-Wilk normality test
+
+data:  attrakDiff2_vf_pq_clean
+W = 0.97168, p-value = 0.7086
+
+[1] "attrakDiff2_vf_hqi"
+
+	Shapiro-Wilk normality test
+
+data:  attrakDiff2_vf_hqi_clean
+W = 0.98776, p-value = 0.9821
+
+[1] "attrakDiff2_vf_hqs"
+
+	Shapiro-Wilk normality test
+
+data:  attrakDiff2_vf_hqs_clean
+W = 0.91383, p-value = 0.03715
+
+[1] "attrakDiff2_vf_hq"
+
+	Shapiro-Wilk normality test
+
+data:  attrakDiff2_vf_hq_clean
+W = 0.9293, p-value = 0.07456
+
+[1] "tlx_ment"
+
+	Shapiro-Wilk normality test
+
+data:  tlx_ment_clean
+W = 0.94957, p-value = 0.1933
+
+[1] "tlx_phys"
+
+	Shapiro-Wilk normality test
+
+data:  tlx_phys_clean
+W = 0.96007, p-value = 0.3711
+
+[1] "tlx_temp"
+
+	Shapiro-Wilk normality test
+
+data:  tlx_temp_clean
+W = 0.9455, p-value = 0.1525
+
+[1] "tlx_perf"
+
+	Shapiro-Wilk normality test
+
+data:  tlx_perf_clean
+W = 0.93147, p-value = 0.06713
+
+[1] "tlx_eff"
+
+	Shapiro-Wilk normality test
+
+data:  tlx_eff_clean
+W = 0.92924, p-value = 0.059
+
+[1] "tlx_frust"
+
+	Shapiro-Wilk normality test
+
+data:  tlx_frust_clean
+W = 0.92365, p-value = 0.04838
+
+[1] "tlx_score"
+
+	Shapiro-Wilk normality test
+
+data:  tlx_score_clean
+W = 0.97961, p-value = 0.841
+
+[1] "tlx_vf_ment"
+
+	Shapiro-Wilk normality test
+
+data:  tlx_vf_ment_clean
+W = 0.94334, p-value = 0.1344
+
+[1] "tlx_vf_phys"
+
+	Shapiro-Wilk normality test
+
+data:  tlx_vf_phys_clean
+W = 0.96671, p-value = 0.4957
+
+[1] "tlx_vf_temp"
+
+	Shapiro-Wilk normality test
+
+data:  tlx_vf_temp_clean
+W = 0.9524, p-value = 0.2275
+
+[1] "tlx_vf_perf"
+
+	Shapiro-Wilk normality test
+
+data:  tlx_vf_perf_clean
+W = 0.94248, p-value = 0.1278
+
+[1] "tlx_vf_eff"
+
+	Shapiro-Wilk normality test
+
+data:  tlx_vf_eff_clean
+W = 0.92089, p-value = 0.03649
+
+[1] "tlx_vf_frust"
+
+	Shapiro-Wilk normality test
+
+data:  tlx_vf_frust_clean
+W = 0.94886, p-value = 0.1855
+
+[1] "tlx_vf_score"
+
+	Shapiro-Wilk normality test
+
+data:  tlx_vf_score_clean
+W = 0.97734, p-value = 0.7979
+
+[1] "sart_s"
+
+	Shapiro-Wilk normality test
+
+data:  sart_s_clean
+W = 0.97928, p-value = 0.8328
+
+[1] "sart_d"
+
+	Shapiro-Wilk normality test
+
+data:  sart_d_clean
+W = 0.93895, p-value = 0.1039
+
+[1] "sart_u"
+
+	Shapiro-Wilk normality test
+
+data:  sart_u_clean
+W = 0.98604, p-value = 0.9623
+
+[1] "sart_sa"
+
+	Shapiro-Wilk normality test
+
+data:  sart_sa_clean
+W = 0.95431, p-value = 0.2722
+
+[1] "sart_vf_s"
+
+	Shapiro-Wilk normality test
+
+data:  sart_vf_s_clean
+W = 0.95388, p-value = 0.2853
+
+[1] "sart_vf_d"
+
+	Shapiro-Wilk normality test
+
+data:  sart_vf_d_clean
+W = 0.92105, p-value = 0.03682
+
+[1] "sart_vf_u"
+
+	Shapiro-Wilk normality test
+
+data:  sart_vf_u_clean
+W = 0.94808, p-value = 0.1773
+
+[1] "sart_vf_sa"
+
+	Shapiro-Wilk normality test
+
+data:  sart_vf_sa_clean
+W = 0.97059, p-value = 0.5965
+
+[1] "...done"
+[1] "------------------------Check significance/p-values on clean data---------------------------"
+[1] "sus_pq"
+
+	Welch Two Sample t-test
+
+data:  sus_pq_clean and sus_pq_vf_clean
+t = 0.1819, df = 53.998, p-value = 0.8563
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.5369908  0.6441551
+sample estimates:
+mean of x mean of y 
+ 4.690479  4.636896 
+
+[1] "sus"
+
+	Welch Two Sample t-test
+
+data:  sus_clean and sus_vf_clean
+t = 0.62505, df = 52.559, p-value = 0.5346
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -2.308948  4.398895
+sample estimates:
+mean of x mean of y 
+ 54.28571  53.24074 
+
+[1] "attrakDiff2_att"
+
+	Welch Two Sample t-test
+
+data:  attrakDiff2_att_clean and attrakDiff2_vf_att_clean
+t = -0.90606, df = 52.177, p-value = 0.3691
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.6663568  0.2517634
+sample estimates:
+mean of x mean of y 
+ 5.025511  5.232807 
+
+[1] "attrakDiff2_pq"
+
+	Welch Two Sample t-test
+
+data:  attrakDiff2_pq_clean and attrakDiff2_vf_pq_clean
+t = -0.96878, df = 47.397, p-value = 0.3376
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.4333279  0.1515908
+sample estimates:
+mean of x mean of y 
+ 5.365081  5.505950 
+
+[1] "attrakDiff2_hqi"
+
+	Welch Two Sample t-test
+
+data:  attrakDiff2_hqi_clean and attrakDiff2_vf_hqi_clean
+t = -0.96888, df = 52.353, p-value = 0.3371
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.5158734  0.1798837
+sample estimates:
+mean of x mean of y 
+ 4.392861  4.560856 
+
+[1] "attrakDiff2_hqs"
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  attrakDiff2_hqs_clean and attrakDiff2_vf_hqs_clean
+W = 268.5, p-value = 0.2072
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "attrakDiff2_hq"
+
+	Welch Two Sample t-test
+
+data:  attrakDiff2_hq_clean and attrakDiff2_vf_hq_clean
+t = -1.9446, df = 49.997, p-value = 0.05747
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.589520410  0.009545766
+sample estimates:
+mean of x mean of y 
+ 4.253970  4.543958 
+
+[1] "tlx_ment"
+
+	Welch Two Sample t-test
+
+data:  tlx_ment_clean and tlx_vf_ment_clean
+t = -0.55054, df = 53.954, p-value = 0.5842
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -1.6577523  0.9434666
+sample estimates:
+mean of x mean of y 
+ 4.357143  4.714286 
+
+[1] "tlx_ment"
+
+	Welch Two Sample t-test
+
+data:  tlx_ment_clean and tlx_vf_ment_clean
+t = -0.55054, df = 53.954, p-value = 0.5842
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -1.6577523  0.9434666
+sample estimates:
+mean of x mean of y 
+ 4.357143  4.714286 
+
+[1] "tlx_phys"
+
+	Welch Two Sample t-test
+
+data:  tlx_phys_clean and tlx_vf_phys_clean
+t = 0.40377, df = 52.946, p-value = 0.688
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.8239691  1.2393130
+sample estimates:
+mean of x mean of y 
+ 3.814815  3.607143 
+
+[1] "tlx_temp"
+
+	Welch Two Sample t-test
+
+data:  tlx_temp_clean and tlx_vf_temp_clean
+t = -0.54711, df = 54, p-value = 0.5866
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -1.6658776  0.9515919
+sample estimates:
+mean of x mean of y 
+ 3.785714  4.142857 
+
+[1] "tlx_perf"
+
+	Welch Two Sample t-test
+
+data:  tlx_perf_clean and tlx_vf_perf_clean
+t = 0.18978, df = 53.502, p-value = 0.8502
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -1.024987  1.239273
+sample estimates:
+mean of x mean of y 
+ 4.428571  4.321429 
+
+[1] "tlx_eff"
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  tlx_eff_clean and tlx_vf_eff_clean
+W = 410.5, p-value = 0.7661
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "tlx_ment"
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  tlx_frust_clean and tlx_vf_frust_clean
+W = 316, p-value = 0.2955
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "tlx_score"
+
+	Welch Two Sample t-test
+
+data:  tlx_score_clean and tlx_vf_score_clean
+t = -0.65961, df = 50.553, p-value = 0.5125
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -8.933683  4.515698
+sample estimates:
+mean of x mean of y 
+ 42.97619  45.18518 
+
+[1] "sart_s"
+
+	Welch Two Sample t-test
+
+data:  sart_s_clean and sart_vf_s_clean
+t = -0.62784, df = 51.978, p-value = 0.5329
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -2.593772  1.357508
+sample estimates:
+mean of x mean of y 
+ 16.53571  17.15385 
+
+[1] "sart_d"
+
+	Wilcoxon rank sum test with continuity correction
+
+data:  sart_d_clean and sart_vf_d_clean
+W = 370.5, p-value = 0.7294
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "sart_u"
+
+	Welch Two Sample t-test
+
+data:  sart_u_clean and sart_vf_u_clean
+t = -0.93758, df = 51.202, p-value = 0.3529
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -2.2436023  0.8150309
+sample estimates:
+mean of x mean of y 
+ 13.60714  14.32143 
+
+[1] "sart_sa"
+
+	Welch Two Sample t-test
+
+data:  sart_sa_clean and sart_vf_sa_clean
+t = 0.35709, df = 51.857, p-value = 0.7225
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -2.55435  3.66017
+sample estimates:
+mean of x mean of y 
+ 23.48148  22.92857 
+
+[1] "...done"

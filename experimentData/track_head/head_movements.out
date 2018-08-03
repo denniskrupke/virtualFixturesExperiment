@@ -1,0 +1,205 @@
+[1] "------------------Check normality on data without outliers---------------------"
+[1] "Shapiro-Wilk Test"
+[1] "c1 rot"
+
+	Shapiro-Wilk normality test
+
+data:  c1_rot
+W = 0.65512, p-value < 2.2e-16
+
+[1] "c1vf rot"
+
+	Shapiro-Wilk normality test
+
+data:  c1_vf_rot
+W = 0.62595, p-value < 2.2e-16
+
+[1] "c2 rot"
+
+	Shapiro-Wilk normality test
+
+data:  c2_rot
+W = 0.79025, p-value = 2.185e-14
+
+[1] "c2vf rot"
+
+	Shapiro-Wilk normality test
+
+data:  c2_vf_rot
+W = 0.7414, p-value = 4.976e-16
+
+[1] "c3 rot"
+
+	Shapiro-Wilk normality test
+
+data:  c3_rot
+W = 0.72051, p-value < 2.2e-16
+
+[1] "c3vf rot"
+
+	Shapiro-Wilk normality test
+
+data:  c3_vf_rot
+W = 0.74391, p-value = 9.415e-16
+
+[1] "c1 trans"
+
+	Shapiro-Wilk normality test
+
+data:  c1_trans
+W = 0.9361, p-value = 5.801e-07
+
+[1] "c1vf trans"
+
+	Shapiro-Wilk normality test
+
+data:  c1_vf_trans
+W = 0.67292, p-value < 2.2e-16
+
+[1] "c2 trans"
+
+	Shapiro-Wilk normality test
+
+data:  c2_trans
+W = 0.92528, p-value = 1.031e-07
+
+[1] "c2vf trans"
+
+	Shapiro-Wilk normality test
+
+data:  c2_vf_trans
+W = 0.86648, p-value = 3.55e-11
+
+[1] "c3 trans"
+
+	Shapiro-Wilk normality test
+
+data:  c3_trans
+W = 0.70729, p-value < 2.2e-16
+
+[1] "c3vf trans"
+
+	Shapiro-Wilk normality test
+
+data:  c3_vf_trans
+W = 0.78101, p-value = 1.574e-14
+
+[1] "lengths"
+[1] 173
+[1] 173
+[1] 171
+[1] 171
+[1] 167
+[1] 167
+[1] "------------------------Check significance/p-values on raw data---------------------------"
+[1] "c1 rot"
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  c1_rot and c1_vf_rot
+V = 7655, p-value = 0.845
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "c2 rot"
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  c2_rot and c2_vf_rot
+V = 7258, p-value = 0.8841
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "c3 rot"
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  c3_rot and c3_vf_rot
+V = 5987, p-value = 0.1009
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "--------------------------------------------------------------------"
+[1] "c1 trans"
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  c1_trans and c1_vf_trans
+V = 8414, p-value = 0.1783
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "c2 trans"
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  c2_trans and c2_vf_trans
+V = 7433, p-value = 0.9024
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "c3 trans"
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  c3_trans and c3_vf_trans
+V = 7112, p-value = 0.8762
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "------------------Check Baysian Factor of means---------------------"
+[1] "c1 rot"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 0.1020373 ±0%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "c2 rot"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 0.0907484 ±0%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "c3 rot"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 0.1079303 ±0%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "--------------------------------------------------------------------"
+[1] "c1 trans"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 0.08503071 ±0%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "c2 trans"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 0.09033327 ±0%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "c3 trans"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 0.08634773 ±0%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+

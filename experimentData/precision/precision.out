@@ -1,0 +1,209 @@
+[1] "number of files"
+[1] 173
+[1] 173
+[1] 167
+[1] 167
+[1] 173
+[1] 173
+[1] "------------------Check normality on data means with outliers---------------------"
+[1] "Shapiro-Wilk Test means"
+[1] "c1"
+
+	Shapiro-Wilk normality test
+
+data:  c1_means
+W = 0.84768, p-value = 3.789e-12
+
+[1] "c1vf"
+
+	Shapiro-Wilk normality test
+
+data:  c1_vf_means
+W = 0.83162, p-value = 7.462e-13
+
+[1] "c2"
+
+	Shapiro-Wilk normality test
+
+data:  c2_means
+W = 0.81653, p-value = 3.275e-13
+
+[1] "c2vf"
+
+	Shapiro-Wilk normality test
+
+data:  c2_vf_means
+W = 0.97742, p-value = 0.00792
+
+[1] "c3"
+
+	Shapiro-Wilk normality test
+
+data:  c3_means
+W = 0.91241, p-value = 1.184e-08
+
+[1] "c3vf"
+
+	Shapiro-Wilk normality test
+
+data:  c3_vf_means
+W = 0.98741, p-value = 0.1244
+
+[1] "------------------Check normality on data mins with outliers---------------------"
+[1] "Shapiro-Wilk Test mins"
+[1] "c1"
+
+	Shapiro-Wilk normality test
+
+data:  c1_min
+W = 0.97555, p-value = 0.003815
+
+[1] "c1vf"
+
+	Shapiro-Wilk normality test
+
+data:  c1_vf_min
+W = 0.9467, p-value = 4.334e-06
+
+[1] "c2"
+
+	Shapiro-Wilk normality test
+
+data:  c2_min
+W = 0.93549, p-value = 7.707e-07
+
+[1] "c2vf"
+
+	Shapiro-Wilk normality test
+
+data:  c2_vf_min
+W = 0.93561, p-value = 7.876e-07
+
+[1] "c3"
+
+	Shapiro-Wilk normality test
+
+data:  c3_min
+W = 0.94878, p-value = 6.582e-06
+
+[1] "c3vf"
+
+	Shapiro-Wilk normality test
+
+data:  c3_vf_min
+W = 0.9391, p-value = 1.004e-06
+
+[1] "------------------Check significance of means---------------------"
+[1] "Wilcox Test: means"
+[1] "c1"
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  c1_means and c1_vf_means
+V = 9188, p-value = 0.01176
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "c2"
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  c2_means and c2_vf_means
+V = 8458, p-value = 0.02107
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "c3"
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  c3_means and c3_vf_means
+V = 10036, p-value = 0.000142
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "------------------Check significance of mins---------------------"
+[1] "Wilcox Test: mins"
+[1] "c1"
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  c1_min and c1_vf_min
+V = 9276, p-value = 0.007986
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "c2"
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  c2_min and c2_vf_min
+V = 5851, p-value = 0.0819
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "c3"
+
+	Wilcoxon signed rank test with continuity correction
+
+data:  c3_min and c3_vf_min
+V = 7415, p-value = 0.7157
+alternative hypothesis: true location shift is not equal to 0
+
+[1] "------------------Check Baysian Factor of means---------------------"
+[1] "c1 mean"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 0.4334517 ±0%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "c2 mean"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 1.703758 ±0%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "c3 mean"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 116.2191 ±0%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "------------------Check Baysian Factor of mins---------------------"
+[1] "c1 min"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 2.383159 ±0%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "c2 min"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 0.38774 ±0%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
+[1] "c3 min"
+Bayes factor analysis
+--------------
+[1] Alt., r=0.707 : 0.08773459 ±0%
+
+Against denominator:
+  Null, mu = 0 
+---
+Bayes factor type: BFoneSample, JZS
+
