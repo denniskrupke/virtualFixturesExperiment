@@ -49,7 +49,7 @@ public class gripController : MonoBehaviour {
     {
         if (distance < 0.07f)
         {
-            _targetObject.transform.SetParent(parent: _UR5_target.transform);            
+            _targetObject.transform.SetParent(_UR5_target.transform);            
             grabbed = true;
             GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>().SetGrabbed(grabbed);
         }
