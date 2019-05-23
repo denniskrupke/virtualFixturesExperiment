@@ -9,6 +9,7 @@ public class gripController : MonoBehaviour {
     public GameObject _UR5_target;
 	public GameObject _targetObject;
     public GameObject _finger1, _finger2, _finger3;
+    public GameObject _tcp;
     public float minGrabbingDistance = .07f;
 
     private Vector3 targetObjectCenter;
@@ -24,6 +25,7 @@ public class gripController : MonoBehaviour {
         _finger1 = GameObject.Find("s_model_finger_1_joint_1");
         _finger2 = GameObject.Find("s_model_finger_2_joint_1");
         _finger3 = GameObject.Find("s_model_finger_middle_joint_1");
+        _tcp = GameObject.Find("TCP");
 
         _controller.TriggerClicked += HandleTriggerClicked;
         _controller.TriggerUnclicked += HandleTriggerUnclicked;
@@ -49,7 +51,8 @@ public class gripController : MonoBehaviour {
     {
         if (distance < 0.07f)
         {
-            _targetObject.transform.SetParent(_UR5_target.transform);            
+            _targetObject.transform.SetParent(_tcp.transform);
+            //_targetObject.transform.SetParent(_UR5_target.transform);            
             grabbed = true;
             GameObject.Find("ExperimentController").GetComponent<ExperimentDataLogger>().SetGrabbed(grabbed);
         }
@@ -60,7 +63,8 @@ public class gripController : MonoBehaviour {
     // detach targetObject
     private void HandleTriggerUnclicked(object sender, ClickedEventArgs e)
     {
-        _UR5_target.transform.DetachChildren();
+        //_UR5_target.transform.DetachChildren();
+        _tcp.transform.DetachChildren();
         OpenGrippers();
     }
 
